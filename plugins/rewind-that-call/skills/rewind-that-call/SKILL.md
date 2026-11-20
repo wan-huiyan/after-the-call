@@ -76,6 +76,7 @@ If Claude Code built or edited the deck, its session log shows what happened on 
 3. Write at most 5 items under **For Claude next time**. Each one:
    - cites the evidence with its log timestamp ("14 deck edits on call day, the last at 13:52 UTC, eight minutes before the call");
    - is written as a rule ready to save, with a **Why** and a **How to apply** line;
+   - talks to the person as "you", never "he" or "she";
    - records the pattern only, never client names, quotes, figures, file names or project folder names, which often name the client ("freeze the deck the evening before a client call", not the client's numbers).
 4. Ask before saving. On a yes, save each as a memory or lesson in the person's own format, one per file if that is their layout. Never overwrite an existing entry; add to it.
 
