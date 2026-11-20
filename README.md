@@ -21,9 +21,9 @@
 > **Hand your AI agent the call transcript (or let it find the meeting's Gemini notes in your Google Drive), your slides and your "I think that went badly" message, and get back a debrief under 600 words: what the audience actually decided, what went well in their own words, and at most a handful of changes, each tied to the minute it would have helped.**
 
 <p align="center">
-  <img src="docs/flow.svg" width="760" alt="The reply in eight parts: where it stands, what went well, spoken figures vs slides, presenting, workflow, time, one next action, optional cheer-up page"/>
+  <img src="docs/readme/how-it-works.svg" width="800" alt="A cassette labelled 'Renewals call'. Side A: four cards ride past the tape head (a transcript or notes file, the meeting's Gemini notes found through Google Calendar and Drive, the slides, your 'I think that went badly' message); the tape rewinds and prints an 8-part debrief like a receipt, including 'seventy' said vs 17 on the slide called a transcription error. Side B: the deck's build session, read from Claude Code logs (Codex and Cursor readers untested) as counts and times only; a counter runs to 13:52 before the 14:00 call, three rules for the AI are written on the case insert, each with its log time, and saved only when you tick yes."/>
 </p>
-<p align="center"><sub>Every reply follows the same eight parts, so a tired reader can skim it on a phone.</sub></p>
+<p align="center"><sub>Side A: the call's evidence becomes your debrief. Side B: the session that built the deck becomes rules for your AI, saved only if you say yes. (A made-up call.)</sub></p>
 
 ## Quick start 🚀
 
