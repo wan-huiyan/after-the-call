@@ -14,7 +14,7 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/wan-huiyan/rewind-that-call" alt="license"/></a>
   <a href="https://github.com/wan-huiyan/rewind-that-call/commits"><img src="https://img.shields.io/github/last-commit/wan-huiyan/rewind-that-call" alt="last commit"/></a>
-  <img src="https://img.shields.io/badge/version-1.3.0-brightgreen" alt="version 1.3.0"/>
+  <img src="https://img.shields.io/badge/version-1.4.0-brightgreen" alt="version 1.4.0"/>
   <a href="https://claude.com/claude-code"><img src="https://img.shields.io/badge/Claude_Code-skill-orange" alt="Claude Code skill"/></a>
 </p>
 
@@ -111,7 +111,7 @@ Both are optional. Plain HTML and CSS work too.
 
 A transcript is usually a client's words, so the skill is careful with it:
 
-- It works from the files you hand it or, if you have connected Google Drive or Calendar, the meeting's own Gemini notes, which it names so you can check it picked the right call. (Your Claude Code session talks to Anthropic as usual; the skill adds no other service.)
+- It works from the files you hand it or, if you have connected Google Drive or Calendar, the meeting's own Gemini notes, which it names so you can check it picked the right call. If it has neither, it asks first: help you connect Drive or Calendar, have you send the transcript, or go ahead without one. (Your Claude Code session talks to Anthropic as usual; the skill adds no other service.)
 - It never saves client quotes or figures to memory. If you say yes, it saves the pattern ("this client asks for the decision first"), dated.
 - The cheer-up page uses first names only and stays on your machine. It asks before anything is hosted or emailed.
 - Reading your AI's own session logs is opt-in, and the bundled script prints only counts, edit times and your own short messages, never tool output.
