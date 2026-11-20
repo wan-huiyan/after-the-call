@@ -14,11 +14,11 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/wan-huiyan/rewind-that-call" alt="license"/></a>
   <a href="https://github.com/wan-huiyan/rewind-that-call/commits"><img src="https://img.shields.io/github/last-commit/wan-huiyan/rewind-that-call" alt="last commit"/></a>
-  <img src="https://img.shields.io/badge/version-1.1.0-brightgreen" alt="version 1.1.0"/>
+  <img src="https://img.shields.io/badge/version-1.3.0-brightgreen" alt="version 1.3.0"/>
   <a href="https://claude.com/claude-code"><img src="https://img.shields.io/badge/Claude_Code-skill-orange" alt="Claude Code skill"/></a>
 </p>
 
-> **Hand Claude the call transcript, your slides and your "I think that went badly" message, and get back a debrief under 600 words: what the audience actually decided, what went well in their own words, and at most a handful of changes, each tied to the minute it would have helped.**
+> **Hand your AI agent the call transcript (or let it find the meeting's Gemini notes in your Google Drive), your slides and your "I think that went badly" message, and get back a debrief under 600 words: what the audience actually decided, what went well in their own words, and at most a handful of changes, each tied to the minute it would have helped.**
 
 <p align="center">
   <img src="docs/flow.svg" width="760" alt="The reply in eight parts: where it stands, what went well, spoken figures vs slides, presenting, workflow, time, one next action, optional cheer-up page"/>
@@ -41,9 +41,19 @@ cp -r /tmp/rewind-that-call/plugins/rewind-that-call/skills/rewind-that-call ~/.
 ```
 </details>
 
+<details><summary>Codex or another agent</summary>
+
+The skill is plain principles plus one bash script, written for any agent. For Codex, copy the folder into `~/.codex/skills/`; for other agents, point them at `SKILL.md`.
+
+```bash
+git clone https://github.com/wan-huiyan/rewind-that-call /tmp/rewind-that-call
+cp -r /tmp/rewind-that-call/plugins/rewind-that-call/skills/rewind-that-call ~/.codex/skills/
+```
+</details>
+
 ## Try it in 60 seconds ⏱️
 
-No call of your own to hand? The repo ships the made-up call behind the demos: a transcript with the garbled numbers in it, the slides and the "I think that went badly" message. After installing, run Claude Code inside a clone of this repo and paste:
+No call of your own to hand? The repo ships the made-up call behind the demos: a transcript with the garbled numbers in it, the slides and the "I think that went badly" message. After installing, open your agent (Claude Code, Codex, …) inside a clone of this repo and paste:
 
 ```text
 The call just happened and I think it went badly. How can I do better next time?
@@ -79,16 +89,16 @@ And every change it suggests points at a minute of the call: *"Morgan asked 'So 
 | 🛠️ | **Workflow** | At most 4 changes, split by who owns them, an AI deck-builder included |
 | ⏰ | **Time** | 1 or 2 changes, only when the chat shows it (for example, the deck was still changing in the last hour) |
 | 👣 | **One next action** | Something doable today, usually prep for the meeting already booked |
-| 🧠 | **For Claude next time** | Optional, if Claude Code built the deck: it reads that session's log (counts and times only) and writes up to 5 rules for itself, each with the evidence, saved only if you say yes |
+| 🧠 | **Lessons for your AI** | Optional, if an AI built the deck: it reads that session's log (counts and times only; Claude Code tested, Codex and Cursor untested) and writes up to 5 rules for itself, each with the evidence, saved only if you say yes |
 | 🍜 | **Cheer-up page** | Offered in one line: a cute HTML page or slide deck of the learnings, in [garden 🌷](https://wan-huiyan.github.io/rewind-that-call/docs/demo/garden.html), [scrapbook 📎](https://wan-huiyan.github.io/rewind-that-call/docs/demo/scrapbook.html) or [cozy quest 🎮](https://wan-huiyan.github.io/rewind-that-call/docs/demo/cozy-quest.html) style |
 
 ## Usage 💬
 
 > **You:** the call just happened and I think it went badly. Here's the transcript, my slides and my Slack to my PM. How can I do better next time?
 
-> **Claude** *(illustrative example, a made-up call)*:
+> **Your agent** *(illustrative example, a made-up call; the wording is the agent's own each time)*:
 > **Where it stands**: The "pause" at 00:33:00 is "a product launch this month, so new analysis waits until after it". That is about their own schedule, not a rejection.
-> **Spoken figures vs the slides**: "Seventy" against the slide's 17 looks like a transcription error, so I would not coach you on it. Same for "fifty fifty-five" where the slide says 15. If the AI meeting summary repeats either figure, use the slide figures in the follow-up email.
+> **Spoken figures vs the slides**: "Seventy" against the slide's 17 looks like a transcription error, so I would not coach you on it. "Fifty fifty-five" where the slide says 15 is probably transcription too: did you say 15? If the AI meeting summary repeats either figure, use the slide figures in the follow-up email.
 > **Presenting**: 1. Start with the answer. At 00:09:30 Morgan asked "So which one first?", and the options came at 00:24:00.
 
 Then ask for the cheer-up page ("can you make our learnings into something cute?") and it follows [`cheer-page-recipe.md`](plugins/rewind-that-call/skills/rewind-that-call/cheer-page-recipe.md): one content file, the three styles in the gallery at the top to pick from, then a check of every screen before you see it.
@@ -104,17 +114,18 @@ Both are optional. Plain HTML and CSS work too.
 
 A transcript is usually a client's words, so the skill is careful with it:
 
-- It works only from the files you hand it, inside your own Claude Code session. (That session talks to Anthropic as usual; the skill adds no other service.)
+- It works from the files you hand it or, if you have connected Google Drive or Calendar, the meeting's own Gemini notes, which it names so you can check it picked the right call. (Your Claude Code session talks to Anthropic as usual; the skill adds no other service.)
 - It never saves client quotes or figures to memory. If you say yes, it saves the pattern ("this client asks for the decision first"), dated.
 - The cheer-up page uses first names only and stays on your machine. It asks before anything is hosted or emailed.
-- Reading Claude's own session logs is opt-in, and the bundled script prints only counts, edit times and your own short messages, never tool output.
+- Reading your AI's own session logs is opt-in, and the bundled script prints only counts, edit times and your own short messages, never tool output.
 
 ## Limitations 🫶
 
 - Tested on one made-up call, 9 runs in all. It has not yet been tried across many real calls or other languages.
 - It works best from a raw transcript. From an AI meeting summary or your own notes it still gives the structure, but no timestamps, and it says so.
 - It cannot hear the audio, so it cannot tell a real slip from a transcription error. It asks you instead.
-- "For Claude next time" only works when Claude Code built the deck in the last 7 days on this machine, and the script needs `jq`.
+- "Lessons for your AI" needs the build session on this machine from the last 7 days, and `jq`. The Claude Code reader is tested; the Codex and Cursor readers are written from their storage formats and not yet tried on a real session.
+- Finding the notes through Drive is tested on one real call; through Calendar attachments it is not yet tested.
 - It is not presentation-skills training. It works from one call's evidence, not general advice.
 - The three demo decks are fiction: a made-up call with invented people, written to show the styles. They are not output from a real debrief.
 
