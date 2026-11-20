@@ -29,7 +29,17 @@
 
 After a hard call you usually get one of two things: a pep talk, or a wall of generic tips ("know your audience"). Neither helps. This skill was written after a real client call that felt like it had flopped, while the transcript said otherwise.
 
-It also fixes a hidden unfairness. Meeting notetakers mishear numbers ("seventeen" becomes "seventy"), and an AI reading the transcript will happily coach the speaker to "say the numbers as on the slide", for a slip they never made. So this skill checks the spoken figure against the slide first, and asks before it blames anyone.
+## What it catches 🔎
+
+Three things a tired presenter misses the evening after, all from the same made-up call:
+
+**🚦 The "no" that wasn't one.** The call ended on a "pause", and you heard a rejection. The transcript says the pause is about a product launch this month, and the same Morgan said *"This is going straight into our plan for next quarter."*
+
+**🎙️ The slip you never made.** The notetaker wrote "seventy" where your slide says 17. An AI reading that transcript can easily coach you to "say the numbers as on the slide". This skill checks the spoken figure against the slide first, calls it a transcription error, and asks before it blames you.
+
+**🌸 The win you didn't notice.** Easy to miss while you are presenting: Morgan put your main finding in her own words (*"So it's really about getting a second person in?"*) and asked to show it to her boss on Monday. That goes first, before any advice.
+
+And every change it suggests points at a minute of the call: *"Morgan asked 'So which one first?' at 9:30. The options came at 24:00. Next time, lead with the answer."*
 
 ## What it does ✨
 
@@ -70,17 +80,6 @@ cp -r /tmp/after-the-call/plugins/after-the-call/skills/after-the-call ~/.claude
 > **Presenting**: 1. Start with the answer. At 00:09:30 Morgan asked "So which one first?", and the options came at 00:24:00.
 
 Then ask for the cheer-up page ("can you make our learnings into something cute?") and it follows [`cheer-page-recipe.md`](plugins/after-the-call/skills/after-the-call/cheer-page-recipe.md): one content file, the three styles in the gallery at the top to pick from, then a check of every screen before you see it.
-
-## Tested, not just written 🧪
-
-Same made-up call (garbled numbers, an early question about where to start, an opening apology), 3 runs each:
-
-| | Without the skill | With it |
-|---|---|---|
-| Coached the speaker on a speech-to-text error | 1 of 3 | 0 of 3 |
-| Had a "what went well" section | 0 of 3 | 3 of 3 |
-| Offered the cheer-up page | 0 of 3 | 3 of 3 |
-| Length | about 1,000 words | 520 to 538 words |
 
 ## Pairs well with 🎀
 
