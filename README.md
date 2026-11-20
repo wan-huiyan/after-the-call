@@ -27,25 +27,22 @@
 
 ## Quick start 🚀
 
+Give your AI agent (Claude Code, Codex, Cursor, …) this link and ask it to install the skill:
+
+```text
+Install the skill from https://github.com/wan-huiyan/rewind-that-call
+```
+
+It works out where skills go for that agent.
+
+<details><summary>Prefer to do it by hand?</summary>
+
 ```bash
+# Claude Code
 /plugin marketplace add wan-huiyan/rewind-that-call
 /plugin install rewind-that-call@wan-huiyan-rewind-that-call
-```
 
-<details><summary>Shell form / git clone</summary>
-
-```bash
-claude plugin marketplace add wan-huiyan/rewind-that-call
-git clone https://github.com/wan-huiyan/rewind-that-call /tmp/rewind-that-call
-cp -r /tmp/rewind-that-call/plugins/rewind-that-call/skills/rewind-that-call ~/.claude/skills/
-```
-</details>
-
-<details><summary>Codex or another agent</summary>
-
-The skill is plain principles plus one bash script, written for any agent. For Codex, copy the folder into `~/.codex/skills/`; for other agents, point them at `SKILL.md`.
-
-```bash
+# Codex (any other agent: point it at SKILL.md in this folder)
 git clone https://github.com/wan-huiyan/rewind-that-call /tmp/rewind-that-call
 cp -r /tmp/rewind-that-call/plugins/rewind-that-call/skills/rewind-that-call ~/.codex/skills/
 ```
