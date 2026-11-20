@@ -1,19 +1,19 @@
-<h1 align="center">after-the-call 🌱</h1>
+<h1 align="center">rewind-that-call 🌱</h1>
 <p align="center"><em>The kind, specific debrief you need right after a presentation that felt like it went badly.</em></p>
 
 <table>
 <tr>
-<td width="33%" align="center" valign="top"><a href="https://wan-huiyan.github.io/after-the-call/docs/demo/garden.html"><img src="docs/readme/garden.gif" width="100%" alt="Garden style: a smiling seedling under a rainbow and a sun, then the slides turn one by one. Wooden signposts hold the customer's quotes, a watering can stands by a tray of sprouts, a flower grows out of the soil with petals drifting past, and a flower-shaped clock sits on the Time slide."/></a><br/><sub><b>🌷 Garden</b>: flowers sprout as you go<br/><a href="https://wan-huiyan.github.io/after-the-call/docs/demo/garden.html">open live →</a></sub></td>
-<td width="33%" align="center" valign="top"><a href="https://wan-huiyan.github.io/after-the-call/docs/demo/scrapbook.html"><img src="docs/readme/scrapbook.gif" width="100%" alt="Scrapbook style: a smiling rice-ball mascot sits on a pink page with doodled stars and hearts. Polaroids of the customer's quotes pin themselves into empty frames one by one, gold stars sit on taped notes, and a pink alarm clock smiles on the Time page."/></a><br/><sub><b>📎 Scrapbook</b>: polaroids pin in place<br/><a href="https://wan-huiyan.github.io/after-the-call/docs/demo/scrapbook.html">open live →</a></sub></td>
-<td width="33%" align="center" valign="top"><a href="https://wan-huiyan.github.io/after-the-call/docs/demo/cozy-quest.html"><img src="docs/readme/cozy-quest.gif" width="100%" alt="Cozy quest style: a pixel moon and a round pixel mascot over a night sky with a LEVEL UP banner. The customer's words appear in game dialogue boxes, trophies drop into an inventory, and clicking I tried it fills a tip's XP bar with a burst of confetti."/></a><br/><sub><b>🎮 Cozy quest</b>: each tip fills an XP bar<br/><a href="https://wan-huiyan.github.io/after-the-call/docs/demo/cozy-quest.html">open live →</a></sub></td>
+<td width="33%" align="center" valign="top"><a href="https://wan-huiyan.github.io/rewind-that-call/docs/demo/garden.html"><img src="docs/readme/garden.gif" width="100%" alt="Garden style: a smiling seedling under a rainbow and a sun, then the slides turn one by one. Wooden signposts hold the customer's quotes, a watering can stands by a tray of sprouts, a flower grows out of the soil with petals drifting past, and a flower-shaped clock sits on the Time slide."/></a><br/><sub><b>🌷 Garden</b>: flowers sprout as you go<br/><a href="https://wan-huiyan.github.io/rewind-that-call/docs/demo/garden.html">open live →</a></sub></td>
+<td width="33%" align="center" valign="top"><a href="https://wan-huiyan.github.io/rewind-that-call/docs/demo/scrapbook.html"><img src="docs/readme/scrapbook.gif" width="100%" alt="Scrapbook style: a smiling rice-ball mascot sits on a pink page with doodled stars and hearts. Polaroids of the customer's quotes pin themselves into empty frames one by one, gold stars sit on taped notes, and a pink alarm clock smiles on the Time page."/></a><br/><sub><b>📎 Scrapbook</b>: polaroids pin in place<br/><a href="https://wan-huiyan.github.io/rewind-that-call/docs/demo/scrapbook.html">open live →</a></sub></td>
+<td width="33%" align="center" valign="top"><a href="https://wan-huiyan.github.io/rewind-that-call/docs/demo/cozy-quest.html"><img src="docs/readme/cozy-quest.gif" width="100%" alt="Cozy quest style: a pixel moon and a round pixel mascot over a night sky with a LEVEL UP banner. The customer's words appear in game dialogue boxes, trophies drop into an inventory, and clicking I tried it fills a tip's XP bar with a burst of confetti."/></a><br/><sub><b>🎮 Cozy quest</b>: each tip fills an XP bar<br/><a href="https://wan-huiyan.github.io/rewind-that-call/docs/demo/cozy-quest.html">open live →</a></sub></td>
 </tr>
 </table>
 
 <p align="center"><sub>The decks show a made-up call (Morgan, Jo and Kit are invented). Yours is built from your own transcript.</sub></p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/wan-huiyan/after-the-call" alt="license"/></a>
-  <a href="https://github.com/wan-huiyan/after-the-call/commits"><img src="https://img.shields.io/github/last-commit/wan-huiyan/after-the-call" alt="last commit"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/wan-huiyan/rewind-that-call" alt="license"/></a>
+  <a href="https://github.com/wan-huiyan/rewind-that-call/commits"><img src="https://img.shields.io/github/last-commit/wan-huiyan/rewind-that-call" alt="last commit"/></a>
   <img src="https://img.shields.io/badge/version-1.0.2-brightgreen" alt="version 1.0.2"/>
   <a href="https://claude.com/claude-code"><img src="https://img.shields.io/badge/Claude_Code-skill-orange" alt="Claude Code skill"/></a>
 </p>
@@ -52,21 +52,21 @@ And every change it suggests points at a minute of the call: *"Morgan asked 'So 
 | 🛠️ | **Workflow** | At most 4 changes, split by who owns them, an AI deck-builder included |
 | ⏰ | **Time** | 1 or 2 changes, for example keeping the last 2 to 3 hours for one run-through out loud, and lunch |
 | 👣 | **One next action** | Something doable today, usually prep for the meeting already booked |
-| 🍜 | **Cheer-up page** | Offered in one line: a cute HTML page or slide deck of the learnings, in [garden 🌷](https://wan-huiyan.github.io/after-the-call/docs/demo/garden.html), [scrapbook 📎](https://wan-huiyan.github.io/after-the-call/docs/demo/scrapbook.html) or [cozy quest 🎮](https://wan-huiyan.github.io/after-the-call/docs/demo/cozy-quest.html) style |
+| 🍜 | **Cheer-up page** | Offered in one line: a cute HTML page or slide deck of the learnings, in [garden 🌷](https://wan-huiyan.github.io/rewind-that-call/docs/demo/garden.html), [scrapbook 📎](https://wan-huiyan.github.io/rewind-that-call/docs/demo/scrapbook.html) or [cozy quest 🎮](https://wan-huiyan.github.io/rewind-that-call/docs/demo/cozy-quest.html) style |
 
 ## Quick start 🚀
 
 ```bash
-/plugin marketplace add wan-huiyan/after-the-call
-/plugin install after-the-call@wan-huiyan-after-the-call
+/plugin marketplace add wan-huiyan/rewind-that-call
+/plugin install rewind-that-call@wan-huiyan-rewind-that-call
 ```
 
 <details><summary>Shell form / git clone</summary>
 
 ```bash
-claude plugin marketplace add wan-huiyan/after-the-call
-git clone https://github.com/wan-huiyan/after-the-call /tmp/after-the-call
-cp -r /tmp/after-the-call/plugins/after-the-call/skills/after-the-call ~/.claude/skills/
+claude plugin marketplace add wan-huiyan/rewind-that-call
+git clone https://github.com/wan-huiyan/rewind-that-call /tmp/rewind-that-call
+cp -r /tmp/rewind-that-call/plugins/rewind-that-call/skills/rewind-that-call ~/.claude/skills/
 ```
 </details>
 
@@ -79,7 +79,7 @@ cp -r /tmp/after-the-call/plugins/after-the-call/skills/after-the-call ~/.claude
 > **Spoken figures vs the slides**: "Seventy" against the slide's 17 looks like a transcription error, so I would not coach you on it. Same for "fifty fifty-five" where the slide says 15. If the AI meeting summary repeats either figure, use the slide figures in the follow-up email.
 > **Presenting**: 1. Start with the answer. At 00:09:30 Morgan asked "So which one first?", and the options came at 00:24:00.
 
-Then ask for the cheer-up page ("can you make our learnings into something cute?") and it follows [`cheer-page-recipe.md`](plugins/after-the-call/skills/after-the-call/cheer-page-recipe.md): one content file, the three styles in the gallery at the top to pick from, then a check of every screen before you see it.
+Then ask for the cheer-up page ("can you make our learnings into something cute?") and it follows [`cheer-page-recipe.md`](plugins/rewind-that-call/skills/rewind-that-call/cheer-page-recipe.md): one content file, the three styles in the gallery at the top to pick from, then a check of every screen before you see it.
 
 ## Pairs well with 🎀
 
