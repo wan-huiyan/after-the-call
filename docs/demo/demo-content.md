@@ -34,7 +34,7 @@ Morgan's team has a product launch this month, so new analysis waits until after
 4. Before the next phase, agree with the customer what a good result would look like.
 
 ## Time
-Keep the last two to three hours before a call for one timed run-through out loud, and lunch. Tell Claude a stop time and it will stop.
+Keep the last two to three hours before a call for one timed run-through out loud, and lunch. Pick a stop time and write it down.
 
 ## Tomorrow
 20 minutes with Kit on next steps. Bring the three opening sentences:
