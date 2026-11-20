@@ -15,6 +15,7 @@ A kind, specific debrief after a presentation, then (if wanted) a cute page or s
 
 | What you have | What you do |
 |---|---|
+| Nothing handed over, and no Google Drive or Calendar tool available | Before anything else, ask (see "First run: get the transcript" below). |
 | Nothing handed over, but a Google Drive or Calendar tool (connector or MCP server) is available | Find the meeting's notes yourself (below), then come back to this table. |
 | A raw transcript with timestamps | The reply below, in full. |
 | An AI meeting summary only (Gemini, Otter, Zoom, Teams notes) | Say so in one line. Never present the summary's wording as the audience's own words and never invent a minute; mark such points as coming from the summary, with no timestamp. Skip the spoken-figures check unless the summary quotes a figure. |
@@ -22,6 +23,16 @@ A kind, specific debrief after a presentation, then (if wanted) a cute page or s
 | Timestamps that look offset (recording started late, times run past the call length) | Ask once for the offset before quoting minutes. |
 
 Every timestamp you write must appear in the input. If you cannot point to it, leave the minute out.
+
+### First run: get the transcript
+
+The debrief is only as good as its input, and a full transcript with timestamps is what makes it specific. When nothing was handed over and you have no Drive or Calendar tool, do not start from memory. Ask the person, in your own words and in one short message, which they would like:
+
+- **Connect Google Calendar or Drive**, so this and future calls can be found automatically. Ask permission before guiding them. Gemini's meeting notes live in Drive (Calendar only links to them), so Drive is the one that matters. Guide them through your own agent's way of adding a connector or MCP server, step by step, without assuming a menu you have not seen; if you do not know how your agent does it, say so and point them to its documentation. Never ask them to paste passwords, tokens or keys into the chat. Once it is connected, carry on from "Finding the call's notes yourself".
+- **Send the full transcript** now (from Google Meet's notes doc, Zoom, Teams, Otter or similar), ideally the timestamped one rather than a summary.
+- **Go ahead without one**, from their notes or memory, knowing the debrief will have no timestamps (the notes-only row above).
+
+Ask once. If they pick an option, follow it; if they decline to set anything up, do not ask again in this conversation. If your agent keeps notes or memory between sessions, offer to record their choice so a later debrief does not ask again, and record it only on a yes.
 
 ### Finding the call's notes yourself
 
@@ -120,6 +131,7 @@ If notes, memory or persona files exist for this client, offer to update them wi
 
 ## Changelog
 
+- 1.4.0, 2026-11-20: first run, with no transcript and no Drive or Calendar tool, the agent asks once whether to guide the person through connecting Drive or Calendar, have them send the full transcript, or go ahead without one; it remembers the choice only on a yes.
 - 1.3.0, 2026-11-20: principles, not a script. Removed every fixed phrase, title and heading the agent was told to say or display; each is now the principle behind it, and the agent writes its own words for the person and the call. Agent-neutral throughout (any agent, not only Claude); saving goes to whatever notes, memory or rules file the person's agent uses. The cheer-up recipe now lists what to cover, not what to write. Rule changes: Time is 0 to 2 changes and is left out without evidence; saved lessons follow the target file's format rather than fixed Why / How-to-apply lines; input without timestamps anchors changes to the person's own words; the agent uses the conversation it is in as evidence for Workflow and Time; a missing shell, browser or unsupported agent is reported as a skipped check, never as "nothing found"; cheer-page quotes are up to 4 and the Time line appears only when the debrief had one.
 - 1.2.0, 2026-11-20: finds the call's notes through a Google Drive or Calendar connector when none is handed over (tested on a real call); the session-log script also reads Codex and Cursor (both readers untested).
 - 1.1.0, 2026-11-20: renamed from after-the-call. New: an input check (summary-only and notes-only input never get invented timestamps), a branch for calls that really did go badly, a stricter spoken-figures table (partly garbled means ask; an audience reaction means a real slip; names and "can/can't" too), a Time rule that needs evidence, privacy rules, and lessons for Claude from the build session via `scripts/session_evidence.sh`.
