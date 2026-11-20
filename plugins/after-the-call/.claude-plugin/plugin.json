@@ -1,0 +1,9 @@
+{
+  "name": "after-the-call",
+  "description": "A kind, specific debrief after a presentation, client call, demo or talk: where things stand, what went well (with the audience's own words), spoken figures checked against the slides, at most a handful of changes each tied to a timestamp, and an optional cute cheer-up page or slide deck.",
+  "version": "1.0.1",
+  "author": { "name": "Huiyan Wan" },
+  "repository": "https://github.com/wan-huiyan/after-the-call",
+  "license": "MIT",
+  "keywords": ["presentation", "debrief", "retrospective", "meeting", "transcript", "feedback", "cute"]
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 212" width="880" height="212" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <clipPath id="r"><rect width="880" height="212" rx="18"/></clipPath><g clip-path="url(#r)"><rect width="880" height="212" fill="#f3fbf4"/>
+  <path d="M0 196 Q220 184 440 196 T880 196 L880 212 L0 212 Z" fill="#d9f2c4"/></g>
+  <g font-size="13" fill="#24402c" text-anchor="middle">
+    <g transform="translate(70,0)"><circle cx="0" cy="96" r="30" fill="#fff" stroke="#9fd8a8" stroke-width="3"/><text x="0" y="102" font-size="22">🧭</text><text x="0" y="150" font-weight="700">Where it</text><text x="0" y="166" font-weight="700">stands</text></g>
+    <g transform="translate(176,0)"><circle cx="0" cy="96" r="30" fill="#fff" stroke="#f9a8d4" stroke-width="3"/><text x="0" y="102" font-size="22">🌸</text><text x="0" y="150" font-weight="700">What went</text><text x="0" y="166" font-weight="700">well</text></g>
+    <g transform="translate(282,0)"><circle cx="0" cy="96" r="30" fill="#fff" stroke="#93c5fd" stroke-width="3"/><text x="0" y="102" font-size="22">🎙️</text><text x="0" y="150" font-weight="700">Spoken figures</text><text x="0" y="166" font-weight="700">vs slides</text></g>
+    <g transform="translate(388,0)"><circle cx="0" cy="96" r="30" fill="#fff" stroke="#fcd34d" stroke-width="3"/><text x="0" y="102" font-size="22">🎤</text><text x="0" y="150" font-weight="700">Presenting</text><text x="0" y="166">at most 5</text></g>
+    <g transform="translate(494,0)"><circle cx="0" cy="96" r="30" fill="#fff" stroke="#c4b5fd" stroke-width="3"/><text x="0" y="102" font-size="22">🛠️</text><text x="0" y="150" font-weight="700">Workflow</text><text x="0" y="166">by owner</text></g>
+    <g transform="translate(600,0)"><circle cx="0" cy="96" r="30" fill="#fff" stroke="#fdba74" stroke-width="3"/><text x="0" y="102" font-size="22">⏰</text><text x="0" y="150" font-weight="700">Time</text><text x="0" y="166">1 or 2</text></g>
+    <g transform="translate(706,0)"><circle cx="0" cy="96" r="30" fill="#fff" stroke="#86efac" stroke-width="3"/><text x="0" y="102" font-size="22">👣</text><text x="0" y="150" font-weight="700">One next</text><text x="0" y="166" font-weight="700">action</text></g>
+    <g transform="translate(812,0)"><circle cx="0" cy="96" r="30" fill="#fff" stroke="#f472b6" stroke-width="3"/><text x="0" y="102" font-size="22">🍜</text><text x="0" y="150" font-weight="700">Cheer-up</text><text x="0" y="166">page (optional)</text></g>
+  </g>
+  <text x="440" y="36" text-anchor="middle" font-size="16" font-weight="700" fill="#24402c">The reply, in this order · under 600 words · every change tied to a timestamp</text>
+</svg>

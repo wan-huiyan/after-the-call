@@ -1,0 +1,1172 @@
+<!doctype html>
+<html lang="en" data-palette="meadow" data-floaters="leaves" data-floaters-count="16" data-trail="sparkle" data-confetti="petal" data-peekaboo-msg="the garden is still here">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>After the rain, a made-up example</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 30 C22 14 10 16 8 24 C16 32 26 32 32 30Z' fill='%237cc47a'/%3E%3Cpath d='M32 27 C42 10 56 12 58 20 C50 29 40 30 32 27Z' fill='%2394d38f'/%3E%3Cellipse cx='32' cy='46' rx='20' ry='17' fill='%23bfe3a4' stroke='%235e9e5c' stroke-width='3'/%3E%3Ccircle cx='25' cy='44' r='2.6' fill='%2323372b'/%3E%3Ccircle cx='39' cy='44' r='2.6' fill='%2323372b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<!--
+  Direction A, "After the rain, a garden", as a slide deck. A public demo: every name and figure in it is made up.
+  Design system: sky to leaf ground, ink #20352a, deep leaf #1f5136 headings,
+  dark rose #9c3049 as the one text accent, meadow tokens for flowers and particles only. Nunito for headings, Source Sans 3 for body.
+  Stage: 1920x1080, scaled to fit and letterboxed. When the fitted scale would drop below 0.5 (phones, small windows),
+  the deck switches to a reflow mode: same slides, one per screen, laid out at real pixel sizes and scrollable.
+  Motion: each slide replays a choreographed entrance (Web Animations API, transform and opacity only, under 1.2 s);
+  the sprout pops up, changes face and hops on every slide; the three wins and the sign-off burst petals on arrival.
+-->
+<style>
+/* ---------- cute_chrome.css (sparkle-that-page 1.1.0, inlined verbatim) ---------- */
+:root { --stp-c1: #f472b6; --stp-c2: #c084fc; --stp-c3: #fde047; --stp-c4: #a5b4fc; --stp-c5: #fb7185; --stp-c6: ; --stp-ink: #fff; }
+[data-palette="neon"] { --stp-c1: #2ee6ff; --stp-c2: #b6ff3d; --stp-c3: #ff5ad0; --stp-c4: #ffb43d; --stp-c5: #ffffff; --stp-c6: ; --stp-ink: #0b1020; }
+[data-palette="meadow"] { --stp-c1: #e87a90; --stp-c2: #6a5acd; --stp-c3: #4aad9a; --stp-c4: #d4943a; --stp-c5: #b8a8e0; --stp-c6: #f4c4a0; --stp-ink: #3a2a2e; }
+::selection { background: #f9a8d4; background: color-mix(in srgb, var(--stp-c1) 60%, #fff); color: var(--stp-ink); }
+::-moz-selection { background: #f9a8d4; background: color-mix(in srgb, var(--stp-c1) 60%, #fff); color: var(--stp-ink); }
+.stp-wobble { display: inline-block; transition: transform .15s ease; }
+@media (prefers-reduced-motion: no-preference) {
+  @media (hover: hover) and (pointer: fine) {
+    .stp-wobble:hover { animation: stp-wobble .35s cubic-bezier(0.23, 1, 0.32, 1); }
+  }
+  @keyframes stp-wobble {
+    0%, 100% { transform: rotate(0) scale(1); }
+    35% { transform: rotate(-2deg) scale(1.03); }
+    70% { transform: rotate(1.5deg) scale(1.03); }
+  }
+}
+.stp-spinner, .stp-spinner::before, .stp-spinner::after {
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--stp-c2);
+}
+.stp-spinner { position: relative; }
+.stp-spinner::before, .stp-spinner::after { content: ""; position: absolute; top: 0; }
+.stp-spinner::before { left: -14px; background: var(--stp-c1); }
+.stp-spinner::after { left: 14px; background: var(--stp-c4); }
+@media (prefers-reduced-motion: no-preference) {
+  .stp-spinner, .stp-spinner::before, .stp-spinner::after { animation: stp-bounce 1s ease-in-out infinite; }
+  .stp-spinner::before { animation-delay: -.16s; }
+  .stp-spinner::after { animation-delay: .16s; }
+  @keyframes stp-bounce { 0%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-8px); } }
+}
+* { scrollbar-width: thin; scrollbar-color: #f9a8d4 #fdf2f8; scrollbar-color: color-mix(in srgb, var(--stp-c1) 60%, #fff) color-mix(in srgb, var(--stp-c1) 10%, #fff); }
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: #fdf2f8; background: color-mix(in srgb, var(--stp-c1) 10%, #fff); }
+::-webkit-scrollbar-thumb { background: #f9a8d4; background: color-mix(in srgb, var(--stp-c1) 60%, #fff); border-radius: 6px; border: 3px solid #fdf2f8; border-color: color-mix(in srgb, var(--stp-c1) 10%, #fff); }
+::-webkit-scrollbar-thumb:hover { background: var(--stp-c1); }
+
+/* ---------- tokens ---------- */
+:root {
+  color-scheme: light;
+  --ink: #20352a; --ink-soft: #3c5146; --head: #1f5136; --rose: #9c3049;
+  --sky: #e3f1fb; --leaf-bg: #eef6e8; --paper: #fffdf6;
+  --soil: #8a5a3b; --soil-dark: #6d4329; --wood: #ecd5ad;
+  --round: "Nunito", ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", system-ui, sans-serif;
+  --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* stage sizes (px at 1920x1080) */
+  --px: 140px; --pt: 88px; --gap: 40px;
+  --h1: 132px; --h2: 80px; --note: 30px; --lede: 40px; --body: 32px; --big: 48px;
+  --q: 42px; --aside: 28px; --cap: 50px; --pkh: 33px; --pkp: 28px; --pks: 24px; --stone: 34px;
+}
+html.reflow {
+  --px: 16px; --pt: 52px; --gap: 22px;
+  --h1: 46px; --h2: 31px; --note: 17px; --lede: 19px; --body: 18px; --big: 23px;
+  --q: 20px; --aside: 16px; --cap: 22px; --pkh: 20px; --pkp: 17px; --pks: 16px; --stone: 19px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; }
+body { background: #d3e7c9; color: var(--ink); font: 400 var(--body)/1.5 var(--sans); -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: var(--round); color: var(--head); margin: 0; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+button { font: inherit; color: inherit; }
+
+/* ---------- deck shell ---------- */
+.deck { position: fixed; inset: 0; overflow: hidden; touch-action: pan-y; }
+.stage {
+  position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; overflow: hidden;
+  background: linear-gradient(180deg, var(--sky) 0, #edf6f3 48%, var(--leaf-bg) 100%);
+  border-radius: 6px; box-shadow: 0 30px 80px -40px rgba(30, 70, 40, .5);
+}
+html.reflow .stage { width: 100%; height: 100%; transform: none !important; border-radius: 0; box-shadow: none; }
+.floaters { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.slide { position: absolute; inset: 0; z-index: 1; display: none; flex-direction: column; padding: var(--pt) var(--px) 0; overflow: hidden; }
+.slide.on { display: flex; }
+html.reflow .slide { overflow-x: hidden; overflow-y: auto; padding-bottom: 84px; -webkit-overflow-scrolling: touch; }
+.count {
+  position: fixed; right: 16px; bottom: 14px; z-index: 2147483603; pointer-events: none;
+  font: 600 16px/1 var(--sans); color: var(--ink); background: rgba(255, 253, 246, .88);
+  padding: 8px 13px; border-radius: 999px; box-shadow: 0 6px 16px -10px rgba(30, 70, 40, .6);
+}
+.count b { font-weight: 600; color: var(--head); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- section heading + the sprout in its soil mound ---------- */
+.sh { display: flex; align-items: flex-end; gap: 24px; margin-bottom: var(--gap); flex: none; }
+.sh .t { flex: 1; min-width: 0; }
+.sh h2 { font-weight: 900; font-size: var(--h2); line-height: 1.06; letter-spacing: -.01em; }
+.sh .note { margin-top: 12px; font-size: var(--note); line-height: 1.4; color: var(--ink-soft); }
+.popper { position: relative; flex: none; width: 200px; height: 160px; overflow: hidden; cursor: pointer; }
+.popper .sp { position: absolute; left: 38px; bottom: 0; width: 124px; transform: translateY(-10%); }
+.popper .mound { position: absolute; left: 0; bottom: 0; width: 100%; height: 50px; }
+html.reflow .popper { width: 104px; height: 88px; }
+html.reflow .popper .sp { left: 22px; width: 60px; }
+html.reflow .popper .mound { height: 28px; }
+.sprout svg { display: block; width: 100%; height: auto; overflow: visible; }
+.sprout .hop { transform-origin: 50% 100%; }
+
+/* ---------- 1 · title ---------- */
+.s-title { padding: 0; }
+.sky-bow { position: absolute; right: 40px; top: 150px; width: 760px; opacity: .5; }
+.sky-cloud { position: absolute; left: -50px; top: 0; width: 300px; opacity: .9; }
+.sky-sun { position: absolute; right: 110px; top: 64px; width: 340px; }
+.t-copy { position: relative; z-index: 2; padding: 136px 0 0 170px; }
+.demo-tag { display: inline-block; margin-bottom: 16px; padding: 8px 20px; border-radius: 999px; background: rgba(255, 253, 246, .9); border: 2px dashed #b9cfae; font: 600 24px/1.2 var(--sans); color: var(--ink-soft); letter-spacing: .02em; }
+.t-copy h1 { font-weight: 900; font-size: var(--h1); line-height: 1.02; letter-spacing: -.015em; max-width: 1180px; }
+.t-copy .lede { margin-top: 40px; font-size: var(--lede); line-height: 1.45; max-width: 30ch; color: var(--ink-soft); }
+.t-copy .lede strong { display: block; margin-top: 10px; color: var(--rose); font-weight: 600; }
+.garden-strip { position: absolute; left: 0; right: 0; bottom: 0; height: 360px; }
+.garden-strip > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-sprout { position: absolute; left: 50%; bottom: 44px; width: 196px; margin-left: -98px; z-index: 3; cursor: pointer; }
+html.reflow .s-title { padding: 0; }
+html.reflow .sky-bow { top: 74px; right: -50px; width: 300px; opacity: .35; }
+html.reflow .sky-cloud { top: 30px; left: auto; right: 120px; width: 120px; opacity: .65; }
+html.reflow .sky-sun { top: 34px; right: 10px; width: 104px; }
+html.reflow .t-copy { padding: 150px 16px 0; }
+html.reflow .t-copy .lede { margin-top: 20px; }
+html.reflow .demo-tag { margin-bottom: 12px; padding: 5px 12px; font-size: 14px; }
+html.reflow .s-title .garden-strip { position: relative; margin-top: auto; height: 250px; flex: none; }
+html.reflow .hero-sprout { width: 104px; margin-left: -52px; left: 40%; bottom: 20px; }
+
+/* ---------- 2 · the quotes: plant markers in soil ---------- */
+.field { position: relative; margin: auto 0 120px; }
+.markers { position: relative; z-index: 1; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; align-items: end; padding: 0 14px; }
+.marker { display: flex; flex-direction: column; align-items: center; }
+.board {
+  position: relative; width: 100%; background: var(--wood); border-radius: 22px 22px 18px 18px; padding: 30px 30px 28px;
+  box-shadow: inset 0 -6px 0 rgba(120, 80, 40, .18), 0 14px 26px -16px rgba(80, 50, 20, .55);
+  background-image: repeating-linear-gradient(176deg, transparent 0 20px, rgba(150, 105, 55, .12) 20px 22px);
+}
+.marker:nth-child(1) .board { transform: rotate(-2deg); }
+.marker:nth-child(2) .board { transform: rotate(1.2deg); }
+.marker:nth-child(3) .board { transform: rotate(-1deg); }
+.marker:nth-child(4) .board { transform: rotate(2.2deg); }
+.board q { display: block; quotes: "\201C" "\201D"; font-family: var(--round); font-weight: 800; font-size: var(--q); line-height: 1.28; color: #3b2715; }
+.board .aside { display: block; margin-top: 14px; font-size: var(--aside); line-height: 1.4; color: #5a3d22; font-style: italic; }
+.stake { width: 24px; height: 110px; background: linear-gradient(90deg, #c49a64, #a97c46); border-radius: 0 0 5px 5px; }
+.soil {
+  position: relative; z-index: 2; height: 66px; margin: -36px -10px 0; border-radius: 60px 60px 14px 14px;
+  background: radial-gradient(circle at 12% 40%, rgba(255,255,255,.08) 0 4px, transparent 5px) 0 0/78px 30px, linear-gradient(180deg, var(--soil), var(--soil-dark));
+}
+.hint { position: absolute; left: 0; right: 0; bottom: -56px; text-align: center; font-size: 22px; color: var(--ink-soft); transition: opacity .3s ease; }
+.hint.gone { opacity: 0; }
+.hid { visibility: hidden; }
+html.reflow .field { margin: 6px 0 0; }
+html.reflow .markers { grid-template-columns: 1fr; gap: 14px; padding: 0 4px; }
+html.reflow .stake { height: 22px; width: 14px; }
+html.reflow .marker::after { content: ""; width: 120px; height: 22px; margin-top: -6px; border-radius: 70px 70px 8px 8px; background: linear-gradient(180deg, var(--soil), var(--soil-dark)); }
+html.reflow .soil { display: none; }
+html.reflow .board { padding: 18px 20px; }
+html.reflow .hint { position: static; margin-top: 14px; font-size: 16px; }
+
+/* ---------- 3 · the pause ---------- */
+.pause { flex: 1; display: grid; grid-template-columns: 1.05fr 1fr; gap: 64px; align-items: center; padding-bottom: 70px; }
+.pause-art svg { width: 100%; height: auto; display: block; }
+.pause-copy { background: var(--paper); border-radius: 36px; padding: 52px 56px; box-shadow: 0 20px 44px -30px rgba(30, 70, 40, .6); font-size: var(--body); line-height: 1.5; }
+.pause-copy p + p { margin-top: 24px; }
+.pause-copy .big { font-family: var(--round); font-weight: 800; font-size: var(--big); line-height: 1.2; color: var(--head); }
+.pause-copy .big em { font-style: normal; color: var(--rose); }
+html.reflow .pause { grid-template-columns: 1fr; gap: 18px; padding-bottom: 0; }
+html.reflow .pause-copy { padding: 24px 22px; border-radius: 26px; }
+html.reflow .pause-copy p + p { margin-top: 14px; }
+
+/* ---------- 4–6 · what went well: one flower each ---------- */
+.win { position: relative; flex: 1; display: grid; grid-template-columns: 600px 1fr; gap: 90px; align-items: end; padding-bottom: 60px; margin-top: -20px; }
+.bloom { all: unset; box-sizing: border-box; display: block; cursor: pointer; border-radius: 30px; }
+.bloom:focus-visible { outline: 4px solid #6a5acd; outline-offset: 8px; }
+.bloom .bigf { display: block; width: 540px; height: 675px; margin: 0 auto; overflow: visible; }
+.bloom .mound { display: block; width: 480px; height: 60px; margin: -26px auto 0; }
+.win-copy { align-self: stretch; display: flex; flex-direction: column; padding-bottom: 6px; }
+.win-copy .cap { margin: auto 0; }
+.cap { font-family: var(--round); font-weight: 800; font-size: var(--cap); line-height: 1.24; color: var(--ink); border-radius: 36px; padding: 46px 54px; box-shadow: 0 20px 44px -30px rgba(30, 70, 40, .7); }
+.w1 .cap { background: #fff7f8; } .w2 .cap { background: #fdfaf0; } .w3 .cap { background: #f6f4fd; }
+.bed-row { position: relative; display: flex; align-items: flex-end; gap: 44px; margin-top: 70px; padding: 0 40px; }
+.bed-row::after { content: ""; position: absolute; left: 0; right: 0; bottom: -30px; height: 50px; border-radius: 50px 50px 14px 14px; z-index: 0;
+  background: radial-gradient(circle at 12% 40%, rgba(255,255,255,.08) 0 4px, transparent 5px) 0 0/70px 26px, linear-gradient(180deg, var(--soil), var(--soil-dark)); }
+.buds { position: relative; z-index: 1; display: flex; gap: 40px; align-items: flex-end; }
+.buds svg { display: block; height: 170px; width: auto; overflow: visible; }
+.buds .bud { height: 132px; }
+.bed-row .side { position: relative; z-index: 1; margin-left: auto; width: 150px; margin-bottom: -6px; }
+[data-in="grow"], [data-in="bloom"], [data-in="pop-in"] { transform-box: fill-box; }
+[data-in="grow"] { transform-origin: 50% 100%; }
+[data-in="bloom"], [data-in="pop-in"] { transform-origin: 50% 50%; }
+.buds [data-in="pop-in"] { transform-origin: 50% 100%; }
+html.reflow .win { grid-template-columns: 1fr; gap: 16px; padding-bottom: 0; align-items: start; }
+html.reflow .bloom .bigf { width: 180px; height: 225px; }
+html.reflow .bloom .mound { width: 180px; height: 26px; margin-top: -10px; }
+html.reflow .win-copy { padding-bottom: 0; }
+html.reflow .win-copy .cap { margin: 0; }
+html.reflow .cap { padding: 22px 22px; border-radius: 24px; }
+html.reflow .bed-row { margin-top: 26px; padding: 0 14px; gap: 16px; }
+html.reflow .bed-row::after { height: 24px; bottom: -14px; }
+html.reflow .buds { gap: 16px; }
+html.reflow .buds svg { height: 70px; } html.reflow .buds .bud { height: 54px; }
+html.reflow .bed-row .side { width: 70px; margin-bottom: -2px; }
+
+/* ---------- 7–8 · presenting: seed packets ---------- */
+.packets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; align-items: start; padding: 14px 10px 0; margin: auto 0 130px; }
+.packets.two { grid-template-columns: repeat(2, 560px); justify-content: center; gap: 110px; padding-top: 0; margin: auto 0 150px; }
+.packet { position: relative; background: var(--pk); border-radius: 6px 6px 24px 24px; padding: 24px 32px 34px; box-shadow: 0 3px 0 rgba(0,0,0,.05), 0 22px 36px -28px rgba(40, 60, 40, .75); }
+.packet::before { content: ""; position: absolute; left: 0; right: 0; top: -13px; height: 14px; background: var(--pk);
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 26px 100%;
+          mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / 26px 100%; }
+.pk:nth-child(1) .packet { transform: rotate(-1.2deg); } .pk:nth-child(2) .packet { transform: rotate(.8deg); } .pk:nth-child(3) .packet { transform: rotate(-.6deg); }
+.two .pk:nth-child(1) .packet { transform: rotate(1deg); } .two .pk:nth-child(2) .packet { transform: rotate(-.9deg); }
+.packet .window { background: rgba(255,255,255,.62); border-radius: 18px; height: 168px; display: grid; place-items: center; margin-bottom: 24px; }
+.packet .window svg { height: 140px; width: auto; }
+.packet h3 { font-weight: 800; font-size: var(--pkh); line-height: 1.22; color: #23301f; }
+.packet p { margin-top: 12px; font-size: var(--pkp); line-height: 1.45; color: #2b3329; }
+.packet .said { display: block; margin-top: 16px; font-size: var(--pks); line-height: 1.45; color: #3f3a33; }
+.p-rose { --pk: #fbe0e5; } .p-peach { --pk: #fde6d2; } .p-butter { --pk: #faf0c6; } .p-lav { --pk: #e9e4f8; } .p-mint { --pk: #dcf1e2; }
+html.reflow .packets, html.reflow .packets.two { grid-template-columns: 1fr; gap: 30px; padding: 12px 4px 0; margin: 0; }
+html.reflow .packet { padding: 16px 20px 22px; }
+html.reflow .packet .window { height: 92px; margin-bottom: 14px; } html.reflow .packet .window svg { height: 76px; }
+html.reflow .packet p { margin-top: 8px; } html.reflow .packet .said { margin-top: 10px; }
+
+/* ---------- 9 · workflow: pots on a shelf ---------- */
+.pots { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px; align-items: stretch; padding-top: 6px; margin: auto 0 130px; }
+.pots::before { content: ""; position: absolute; left: -24px; right: -24px; top: 206px; height: 22px; border-radius: 11px; background: linear-gradient(180deg, #c9a06a, #a77c47); box-shadow: 0 10px 16px -10px rgba(80,50,20,.6); }
+.pot { position: relative; display: flex; flex-direction: column; align-items: center; }
+.pot svg { width: 220px; height: 220px; display: block; position: relative; z-index: 1; }
+.pot .tag { margin-top: 26px; background: var(--paper); border-radius: 28px; padding: 28px 30px 32px; width: 100%; flex: 1; box-shadow: 0 18px 34px -28px rgba(30,70,40,.75); }
+.pot .tag p { font-size: var(--pkp); line-height: 1.45; }
+.pot .tag p:first-child { font-family: var(--round); font-weight: 800; font-size: var(--pkh); line-height: 1.25; color: var(--head); }
+.pot .tag p + p { margin-top: 12px; }
+html.reflow .pots { grid-template-columns: 1fr 1fr; gap: 16px 14px; margin: 0; }
+html.reflow .pots::before { display: none; }
+html.reflow .pot svg { width: 104px; height: 104px; }
+html.reflow .pot .tag { margin-top: 0; padding: 14px 14px 16px; border-radius: 20px; }
+html.reflow .pot .tag p:first-child { font-size: 17px; } html.reflow .pot .tag p { font-size: 16px; }
+@media (max-width: 359px) { html.reflow .pots { grid-template-columns: 1fr; } }
+
+/* ---------- 10 · time ---------- */
+.time { display: grid; grid-template-columns: 440px 1fr; gap: 80px; align-items: center; background: #fff9e9; border-radius: 44px; padding: 56px 80px 56px 64px; margin: auto 0 120px; }
+.time svg { width: 440px; height: 440px; display: block; overflow: visible; }
+.time p { font-size: var(--lede); line-height: 1.45; }
+.time p + p { margin-top: 26px; }
+.time .claude { font-family: var(--round); font-weight: 800; font-size: var(--big); line-height: 1.22; color: var(--head); }
+.hands { transform-box: view-box; transform-origin: 115px 115px; }
+.petals { transform-box: fill-box; transform-origin: 50% 50%; }
+html.reflow .time { grid-template-columns: 1fr; gap: 16px; padding: 24px 20px; margin: 4px 0 0; border-radius: 28px; }
+html.reflow .time svg { width: 200px; height: 200px; margin: 0 auto; }
+html.reflow .time p + p { margin-top: 14px; }
+
+/* ---------- 11 · tomorrow: stepping stones ---------- */
+.tomorrow-lede { font-size: var(--lede); line-height: 1.45; max-width: 40ch; }
+.tomorrow-lede strong { color: var(--head); font-weight: 600; }
+.stones { list-style: none; margin: auto 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; align-items: start; }
+.stones li:nth-child(2) { margin-top: 96px; } .stones li:nth-child(3) { margin-top: 22px; }
+.stone { position: relative; background: #e7ebe3; border-radius: 46% 54% 50% 50% / 58% 52% 48% 42%; padding: 62px 62px 68px 118px; box-shadow: inset 0 -10px 0 rgba(60, 80, 60, .1), 0 24px 34px -28px rgba(30, 50, 30, .85); font-family: var(--round); font-weight: 800; font-size: var(--stone); line-height: 1.3; color: #23372b; }
+.stones li:nth-child(2) .stone { background: #e9e6df; border-radius: 52% 48% 46% 54% / 50% 58% 42% 50%; }
+.stones li:nth-child(3) .stone { background: #e4e9ea; border-radius: 48% 52% 56% 44% / 54% 46% 54% 46%; }
+.stone .n { position: absolute; left: 40px; top: 58px; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--head); font-size: 26px; box-shadow: 0 3px 0 rgba(0,0,0,.08); }
+.stone .moss { position: absolute; right: 18%; top: -14px; width: 64px; }
+html.reflow .stones { grid-template-columns: 1fr; gap: 14px; margin-top: 20px; }
+html.reflow .stones li:nth-child(n) { margin-top: 0; }
+html.reflow .stone { padding: 30px 30px 34px 70px; }
+html.reflow .stone .n { left: 22px; top: 30px; width: 36px; height: 36px; font-size: 17px; }
+html.reflow .stone .moss { width: 44px; top: -10px; }
+
+/* ---------- 12 · sign-off ---------- */
+.s-sign { align-items: center; text-align: center; padding-top: 96px; }
+.signoff { all: unset; box-sizing: border-box; position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; cursor: pointer; border-radius: 40px; padding: 10px 30px; }
+.signoff:focus-visible { outline: 4px solid #6a5acd; outline-offset: 4px; }
+.bowl-row { display: flex; align-items: flex-end; justify-content: center; gap: 10px; }
+.bowl { width: 520px; height: auto; display: block; }
+.side { width: 166px; margin-bottom: 8px; }
+.signoff h2 { font-weight: 900; font-size: 112px; line-height: 1.04; margin-top: 28px; }
+.s-sign .garden-strip { height: 330px; z-index: 1; }
+.s-sign .hero-sprout { bottom: 40px; width: 180px; margin-left: -90px; }
+html.reflow .s-sign { padding-top: 72px; }
+html.reflow .bowl { width: 220px; }
+html.reflow .s-sign .hero-sprout { width: 96px; margin-left: -48px; left: 50%; bottom: 16px; }
+html.reflow .signoff h2 { font-size: 38px; margin-top: 16px; }
+html.reflow .s-sign .garden-strip { position: relative; margin: auto -16px -84px; height: 210px; flex: none; width: calc(100% + 32px); }
+
+/* ---------- small ambient loops (reduced-motion aware) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .sun-rays { transform-origin: 140px 140px; animation: spin 60s linear infinite; }
+  .drop { animation: drip 3.4s ease-in infinite; }
+  .drop:nth-of-type(2) { animation-delay: 1.1s; } .drop:nth-of-type(3) { animation-delay: 2.2s; }
+  .steam path { animation: rise 3.2s ease-in-out infinite; }
+  .steam path:nth-child(2) { animation-delay: .9s; } .steam path:nth-child(3) { animation-delay: 1.8s; }
+  .sway { transform-box: fill-box; transform-origin: 50% 100%; animation: sway 5s ease-in-out infinite; }
+  .sway.b { animation-duration: 6.2s; animation-delay: -1.5s; } .sway.c { animation-duration: 4.4s; animation-delay: -2.7s; }
+  .bob { animation: bob 3.6s ease-in-out infinite; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes drip { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: .9; } 80% { opacity: .7; } 100% { transform: translateY(60px); opacity: 0; } }
+@keyframes rise { 0% { transform: translateY(6px); opacity: 0; } 30% { opacity: .85; } 100% { transform: translateY(-18px); opacity: 0; } }
+@keyframes sway { 0%, 100% { transform: rotate(-2.5deg); } 50% { transform: rotate(2.5deg); } }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+<div class="stage" id="stage">
+<div class="floaters" aria-hidden="true"></div>
+
+<!-- ======================= 1 · TITLE ======================= -->
+<section class="slide s-title" aria-label="You did a hard thing today">
+  <svg class="sky-bow" data-in="deco" data-at="60" viewBox="0 0 640 330" aria-hidden="true">
+    <g fill="none" stroke-width="16" stroke-linecap="round">
+      <path d="M20 320 A300 300 0 0 1 620 320" stroke="#f6b9c3"/>
+      <path d="M38 320 A282 282 0 0 1 602 320" stroke="#fbd9a6"/>
+      <path d="M56 320 A264 264 0 0 1 584 320" stroke="#fdf0a8"/>
+      <path d="M74 320 A246 246 0 0 1 566 320" stroke="#c7e9b5"/>
+      <path d="M92 320 A228 228 0 0 1 548 320" stroke="#bfe0f2"/>
+      <path d="M110 320 A210 210 0 0 1 530 320" stroke="#d6cdf3"/>
+    </g>
+  </svg>
+  <svg class="sky-cloud" data-in="deco" data-at="0" viewBox="0 0 320 200" aria-hidden="true">
+    <path d="M58 112 C30 112 22 78 50 70 C52 40 92 30 108 50 C122 22 176 22 186 58 C214 46 246 62 238 92 C266 96 264 128 236 128 L70 128 C60 128 54 120 58 112Z" fill="#d6e2ec"/>
+    <g fill="#9fc3df">
+      <path class="drop" d="M110 140 c-4 7 -6 11 -6 14 a6 6 0 0 0 12 0 c0 -3 -2 -7 -6 -14z"/>
+      <path class="drop" d="M160 138 c-4 7 -6 11 -6 14 a6 6 0 0 0 12 0 c0 -3 -2 -7 -6 -14z"/>
+      <path class="drop" d="M206 142 c-4 7 -6 11 -6 14 a6 6 0 0 0 12 0 c0 -3 -2 -7 -6 -14z"/>
+    </g>
+  </svg>
+  <svg class="sky-sun" data-in="pop-in" data-at="140" viewBox="0 0 280 280" aria-hidden="true">
+    <g class="sun-rays" stroke="#f6c95b" stroke-width="9" stroke-linecap="round">
+      <path d="M140 18v30M140 232v30M18 140h30M232 140h30M54 54l21 21M205 205l21 21M54 226l21-21M205 75l21-21"/>
+    </g>
+    <circle cx="140" cy="140" r="70" fill="#ffd977"/>
+    <circle cx="140" cy="140" r="70" fill="none" stroke="#f2bb48" stroke-width="5"/>
+    <circle cx="116" cy="134" r="7" fill="#6b4a1c"/><circle cx="164" cy="134" r="7" fill="#6b4a1c"/>
+    <circle cx="118.5" cy="131.5" r="2.2" fill="#fff"/><circle cx="166.5" cy="131.5" r="2.2" fill="#fff"/>
+    <ellipse cx="102" cy="154" rx="11" ry="6.5" fill="#f5a37a" opacity=".7"/><ellipse cx="178" cy="154" rx="11" ry="6.5" fill="#f5a37a" opacity=".7"/>
+    <path d="M126 156 q14 13 28 0" fill="none" stroke="#6b4a1c" stroke-width="5" stroke-linecap="round"/>
+  </svg>
+  <div class="t-copy">
+    <p class="demo-tag" data-in="deco" data-at="0">made-up example</p>
+    <h1 data-in="lead" data-at="0">You did a hard thing today.</h1>
+    <p class="lede" data-in="support" data-at="200">Your first renewals analysis, shown live to the customer. <strong data-in="support" data-at="440">And they want to use it.</strong></p>
+  </div>
+  <div class="garden-strip" id="strip" aria-hidden="true">
+    <svg viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice">
+      <path d="M0 150 C220 92 470 120 720 138 S1180 96 1440 128 V360 H0Z" fill="#d3ebc4"/>
+      <path d="M0 214 C300 168 600 188 900 200 S1290 176 1440 192 V360 H0Z" fill="#b2dba2"/>
+      <path d="M0 276 C380 244 1000 252 1440 262 V360 H0Z" fill="#8cc684"/>
+      <ellipse cx="420" cy="300" rx="96" ry="13" fill="#c4e2f3"/>
+      <path d="M372 298 h40 M432 303 h26" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+      <path d="M560 322 C620 304 820 304 880 322 L880 360 L560 360Z" fill="#8a5a3b"/>
+      <g fill="#6fb46c">
+        <path d="M600 316 c-8 -14 -20 -12 -22 -6 c8 8 16 8 22 6z M600 316 c6 -14 18 -14 22 -8 c-8 8 -16 10 -22 8z"/>
+        <path d="M800 316 c-8 -14 -20 -12 -22 -6 c8 8 16 8 22 6z M800 316 c6 -14 18 -14 22 -8 c-8 8 -16 10 -22 8z"/>
+      </g>
+      <g class="sway"><path d="M150 300 C152 260 148 240 150 214" stroke="#5c9f57" stroke-width="5" fill="none"/>
+        <g transform="translate(150 208)"><g fill="#fff"><ellipse rx="9" ry="17" transform="rotate(0) translate(0 -14)"/><ellipse rx="9" ry="17" transform="rotate(60) translate(0 -14)"/><ellipse rx="9" ry="17" transform="rotate(120) translate(0 -14)"/><ellipse rx="9" ry="17" transform="rotate(180) translate(0 -14)"/><ellipse rx="9" ry="17" transform="rotate(240) translate(0 -14)"/><ellipse rx="9" ry="17" transform="rotate(300) translate(0 -14)"/></g><circle r="10" fill="#f6c95b"/></g></g>
+      <g class="sway b"><path d="M236 306 C238 280 234 262 236 246" stroke="#5c9f57" stroke-width="5" fill="none"/>
+        <path d="M222 248 C220 224 230 214 236 222 C242 214 252 224 250 248 C246 258 226 258 222 248Z" fill="#e87a90"/></g>
+      <g class="sway c"><path d="M64 310 C66 290 62 276 64 262" stroke="#5c9f57" stroke-width="5" fill="none"/>
+        <circle cx="64" cy="256" r="13" fill="#b8a8e0"/><circle cx="64" cy="256" r="5" fill="#fff6d6"/></g>
+      <g class="sway b"><path d="M1180 304 C1182 268 1178 246 1180 222" stroke="#5c9f57" stroke-width="5" fill="none"/>
+        <path d="M1166 224 C1164 200 1174 190 1180 198 C1186 190 1196 200 1194 224 C1190 234 1170 234 1166 224Z" fill="#f4a971"/></g>
+      <g class="sway"><path d="M1270 306 C1272 282 1268 266 1270 250" stroke="#5c9f57" stroke-width="5" fill="none"/>
+        <g transform="translate(1270 244)"><g fill="#fbe0e5"><ellipse rx="8" ry="15" transform="translate(0 -12)"/><ellipse rx="8" ry="15" transform="rotate(72) translate(0 -12)"/><ellipse rx="8" ry="15" transform="rotate(144) translate(0 -12)"/><ellipse rx="8" ry="15" transform="rotate(216) translate(0 -12)"/><ellipse rx="8" ry="15" transform="rotate(288) translate(0 -12)"/></g><circle r="8" fill="#e87a90"/></g></g>
+      <g class="sway c"><path d="M1370 310 C1372 290 1368 278 1370 266" stroke="#5c9f57" stroke-width="5" fill="none"/>
+        <circle cx="1370" cy="260" r="12" fill="#4aad9a" opacity=".8"/><circle cx="1370" cy="260" r="4.5" fill="#fff6d6"/></g>
+      <g class="rain-sign" transform="translate(872 238)">
+        <rect x="-6" y="30" width="12" height="54" fill="#a97c46"/>
+        <rect x="-74" y="-6" width="148" height="44" rx="12" fill="#ecd5ad"/>
+        <text x="0" y="22" text-anchor="middle" font-family="Nunito, ui-rounded, system-ui, sans-serif" font-weight="800" font-size="19" fill="#4a3018">after the rain</text>
+      </g>
+      <g stroke="#5c9f57" stroke-width="4" stroke-linecap="round" fill="none">
+        <path d="M300 330 l-6 -16 M306 330 l2 -18 M312 330 l8 -14"/>
+        <path d="M1050 334 l-6 -16 M1056 334 l2 -18 M1062 334 l8 -14"/>
+        <path d="M1400 336 l-6 -16 M1406 336 l2 -18"/>
+        <path d="M30 336 l2 -18 M36 336 l8 -14"/>
+      </g>
+    </svg>
+    <div class="hero-sprout sprout" data-sprout="smile" data-grow></div>
+  </div>
+</section>
+
+<!-- ======================= 2 · THE QUOTES ======================= -->
+<section class="slide s-quotes" aria-label="What Morgan actually said">
+  <header class="sh">
+    <div class="t">
+      <h2 data-in="lead" data-at="0">What Morgan actually said</h2>
+      <p class="note" data-in="support" data-at="130">(her own words from the notes)</p>
+    </div>
+    <div class="popper sprout" data-sprout="wow" aria-hidden="true"></div>
+  </header>
+  <div class="field">
+    <div class="markers">
+      <div class="marker" data-in="plant" data-at="260"><div class="board"><q>So it’s really about getting a second person in?</q><span class="aside">(she put your main finding in her own words)</span></div><div class="stake"></div></div>
+      <div class="marker" data-in="plant" data-at="350" data-frag="1"><div class="board"><q>This is going straight into our plan for next quarter.</q></div><div class="stake"></div></div>
+      <div class="marker" data-in="plant" data-at="420" data-frag="2"><div class="board"><q>Can we try it on the new sign-ups first?</q></div><div class="stake"></div></div>
+      <div class="marker" data-in="plant" data-at="470" data-frag="3"><div class="board"><q>Can I show this to my boss on Monday?</q></div><div class="stake"></div></div>
+    </div>
+    <div class="soil" aria-hidden="true"></div>
+    <p class="hint" aria-hidden="true">tap for the next one</p>
+  </div>
+</section>
+
+<!-- ======================= 3 · THE PAUSE ======================= -->
+<section class="slide s-pause" aria-label="What the pause really means">
+  <header class="sh">
+    <div class="t"><h2 data-in="lead" data-at="0">What the pause really means</h2></div>
+    <div class="popper sprout" data-sprout="calm" aria-hidden="true"></div>
+  </header>
+  <div class="pause">
+    <div class="pause-art" data-in="support" data-at="140" aria-hidden="true">
+      <svg viewBox="0 0 600 360">
+        <ellipse cx="280" cy="326" rx="262" ry="22" fill="#cfe6c0"/>
+        <path d="M40 300 L300 300 L288 334 L52 334Z" fill="#a8744b"/>
+        <rect x="34" y="290" width="272" height="16" rx="6" fill="#8a5a3b"/>
+        <g fill="#6fb46c">
+          <g class="sway"><path d="M80 290 v-26" stroke="#5c9f57" stroke-width="4"/><path d="M80 268 c-10 -16 -24 -14 -26 -6 c10 10 18 10 26 6z M80 266 c8 -16 22 -16 26 -8 c-10 10 -18 12 -26 8z"/></g>
+          <g class="sway b"><path d="M134 290 v-40" stroke="#5c9f57" stroke-width="4"/><path d="M134 254 c-12 -18 -28 -16 -30 -7 c11 11 21 11 30 7z M134 250 c9 -18 25 -18 30 -9 c-11 11 -21 13 -30 9z"/></g>
+          <g class="sway c"><path d="M188 290 v-20" stroke="#5c9f57" stroke-width="4"/><path d="M188 274 c-8 -12 -20 -10 -22 -5 c8 8 15 8 22 5z M188 272 c7 -12 18 -12 22 -6 c-8 8 -15 9 -22 6z"/></g>
+          <g class="sway"><path d="M242 290 v-34" stroke="#5c9f57" stroke-width="4"/><path d="M242 260 c-11 -16 -26 -14 -28 -6 c10 10 19 10 28 6z M242 257 c9 -16 23 -16 28 -8 c-10 10 -19 12 -28 8z"/></g>
+        </g>
+        <g transform="translate(330 168)">
+          <path d="M22 60 L150 60 L140 156 L32 156Z" fill="#8fc1dc"/>
+          <path d="M22 60 L150 60 L148 76 L24 76Z" fill="#7aaecb"/>
+          <path d="M44 60 C40 18 132 18 128 60" fill="none" stroke="#6f9fbd" stroke-width="12" stroke-linecap="round"/>
+          <path d="M146 92 L208 40" stroke="#7aaecb" stroke-width="14" stroke-linecap="round"/>
+          <ellipse cx="214" cy="34" rx="14" ry="20" transform="rotate(40 214 34)" fill="#6f9fbd"/>
+          <g fill="#4f86a8"><circle cx="210" cy="28" r="2.2"/><circle cx="218" cy="34" r="2.2"/><circle cx="212" cy="38" r="2.2"/></g>
+          <path d="M48 100 q38 18 76 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+          <path d="M226 58 c-3 6 -5 9 -5 12 a5 5 0 0 0 10 0 c0 -3 -2 -6 -5 -12z" fill="#9fc3df"/>
+        </g>
+        <g transform="translate(166 128)">
+          <rect x="-5" y="44" width="10" height="66" fill="#a97c46"/>
+          <rect x="-146" y="-6" width="292" height="56" rx="14" fill="#ecd5ad"/>
+          <text x="0" y="29" text-anchor="middle" font-family="Nunito, ui-rounded, system-ui, sans-serif" font-weight="800" font-size="21" fill="#4a3018">after the launch</text>
+        </g>
+      </svg>
+    </div>
+    <div class="pause-copy" data-in="support" data-at="240">
+      <p>Morgan’s team has a product launch this month, so new analysis waits until after it.</p>
+      <p class="big" data-in="support" data-at="400">It is a scheduling pause, <em>not a “no”.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 4–6 · WHAT WENT WELL ======================= -->
+<section class="slide s-win w1" aria-label="What went well, first flower" data-burst=".bigf .head">
+  <header class="sh"><div class="t"><h2 data-in="deco" data-at="0">What went well</h2></div></header>
+  <div class="win">
+    <button class="bloom" type="button" data-celebrate aria-label="A flower for this win: tap for petals">
+      <svg class="bigf" data-flower="1" viewBox="0 0 200 250" aria-hidden="true">
+        <g data-in="grow" data-at="0">
+          <path d="M100 250 C104 200 96 170 100 120" stroke="#5c9f57" stroke-width="8" fill="none"/>
+          <path d="M100 200 C76 182 56 190 50 204 C70 214 88 210 100 200Z" fill="#7cc47a"/>
+          <path d="M101 176 C124 158 146 166 150 180 C130 190 112 186 101 176Z" fill="#94d38f"/>
+        </g>
+        <g class="head" data-in="bloom" data-at="240"><g transform="translate(100 86)"><g fill="#fff" stroke="#f0e6e8" stroke-width="2">
+          <ellipse rx="17" ry="38" transform="translate(0 -30)"/><ellipse rx="17" ry="38" transform="rotate(40) translate(0 -30)"/><ellipse rx="17" ry="38" transform="rotate(80) translate(0 -30)"/><ellipse rx="17" ry="38" transform="rotate(120) translate(0 -30)"/><ellipse rx="17" ry="38" transform="rotate(160) translate(0 -30)"/><ellipse rx="17" ry="38" transform="rotate(200) translate(0 -30)"/><ellipse rx="17" ry="38" transform="rotate(240) translate(0 -30)"/><ellipse rx="17" ry="38" transform="rotate(280) translate(0 -30)"/><ellipse rx="17" ry="38" transform="rotate(320) translate(0 -30)"/></g>
+          <circle r="26" fill="#f6c95b"/><circle r="26" fill="none" stroke="#e4ad3c" stroke-width="3"/>
+        </g></g>
+      </svg>
+      <svg class="mound" viewBox="0 0 420 56" aria-hidden="true"><path d="M0 56 C30 14 120 4 210 4 C300 4 390 14 420 56Z" fill="#8a5a3b"/><path d="M90 30 q6 -4 12 0 M300 24 q6 -4 12 0 M200 40 q5 -3 10 0" stroke="#6d4329" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+    </button>
+    <div class="win-copy">
+      <p class="cap" data-in="support" data-at="320">Morgan put your finding in her own words and wants it in next quarter’s plan.</p>
+      <div class="bed-row" aria-hidden="true"><div class="buds" data-buds="1"></div><span class="side sprout" data-sprout="proud"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide s-win w2" aria-label="What went well, second flower" data-burst=".bigf .head">
+  <header class="sh"><div class="t"><h2>What went well</h2></div></header>
+  <div class="win">
+    <button class="bloom" type="button" data-celebrate aria-label="A flower for this win: tap for petals">
+      <svg class="bigf" data-flower="2" viewBox="0 0 200 250" aria-hidden="true">
+        <g data-in="grow" data-at="0">
+          <path d="M100 250 C96 210 104 170 100 110" stroke="#5c9f57" stroke-width="8" fill="none"/>
+          <path d="M98 230 C70 190 64 150 74 132 C92 160 100 196 98 230Z" fill="#7cc47a"/>
+          <path d="M102 216 C130 186 138 160 132 140 C114 160 104 188 102 216Z" fill="#94d38f"/>
+        </g>
+        <g class="head" data-in="bloom" data-at="240">
+          <path d="M60 70 C56 30 76 22 86 42 C92 20 108 20 114 42 C124 22 144 30 140 70 C136 108 64 108 60 70Z" fill="#e87a90"/>
+          <path d="M86 42 C90 64 92 84 100 104 C108 84 110 64 114 42" fill="#d4627a"/>
+          <path d="M72 58 q4 -12 10 -16" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity=".6"/>
+        </g>
+      </svg>
+      <svg class="mound" viewBox="0 0 420 56" aria-hidden="true"><path d="M0 56 C30 14 120 4 210 4 C300 4 390 14 420 56Z" fill="#8a5a3b"/><path d="M90 30 q6 -4 12 0 M300 24 q6 -4 12 0 M200 40 q5 -3 10 0" stroke="#6d4329" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+    </button>
+    <div class="win-copy">
+      <p class="cap" data-in="support" data-at="320">Jo already knew which accounts have only one user: he is already working on it.</p>
+      <div class="bed-row" aria-hidden="true"><div class="buds" data-buds="2"></div><span class="side sprout" data-sprout="proud"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide s-win w3" aria-label="What went well, third flower" data-burst=".bigf .head">
+  <header class="sh"><div class="t"><h2>What went well</h2></div></header>
+  <div class="win">
+    <button class="bloom" type="button" data-celebrate aria-label="A flower for this win: tap for petals">
+      <svg class="bigf" data-flower="3" viewBox="0 0 200 250" aria-hidden="true">
+        <g data-in="grow" data-at="0">
+          <path d="M100 250 C104 210 96 160 100 104" stroke="#5c9f57" stroke-width="8" fill="none"/>
+          <path d="M100 210 C74 196 54 206 50 220 C72 228 90 222 100 210Z" fill="#7cc47a"/>
+          <path d="M101 168 C126 152 148 160 152 174 C132 184 112 180 101 168Z" fill="#94d38f"/>
+        </g>
+        <g class="head" data-in="bloom" data-at="240"><g transform="translate(100 80)"><g fill="#b8a8e0">
+          <path d="M0 0 C-14 -30 -8 -52 0 -58 C8 -52 14 -30 0 0Z"/><path transform="rotate(45)" d="M0 0 C-14 -30 -8 -52 0 -58 C8 -52 14 -30 0 0Z"/><path transform="rotate(90)" d="M0 0 C-14 -30 -8 -52 0 -58 C8 -52 14 -30 0 0Z"/><path transform="rotate(135)" d="M0 0 C-14 -30 -8 -52 0 -58 C8 -52 14 -30 0 0Z"/><path transform="rotate(180)" d="M0 0 C-14 -30 -8 -52 0 -58 C8 -52 14 -30 0 0Z"/><path transform="rotate(225)" d="M0 0 C-14 -30 -8 -52 0 -58 C8 -52 14 -30 0 0Z"/><path transform="rotate(270)" d="M0 0 C-14 -30 -8 -52 0 -58 C8 -52 14 -30 0 0Z"/><path transform="rotate(315)" d="M0 0 C-14 -30 -8 -52 0 -58 C8 -52 14 -30 0 0Z"/></g>
+          <g fill="#9d8bd6" opacity=".7"><path transform="rotate(22)" d="M0 0 C-9 -22 -5 -38 0 -42 C5 -38 9 -22 0 0Z"/><path transform="rotate(112)" d="M0 0 C-9 -22 -5 -38 0 -42 C5 -38 9 -22 0 0Z"/><path transform="rotate(202)" d="M0 0 C-9 -22 -5 -38 0 -42 C5 -38 9 -22 0 0Z"/><path transform="rotate(292)" d="M0 0 C-9 -22 -5 -38 0 -42 C5 -38 9 -22 0 0Z"/></g>
+          <circle r="17" fill="#fde7a8"/><circle r="17" fill="none" stroke="#e8c15e" stroke-width="3"/>
+        </g></g>
+      </svg>
+      <svg class="mound" viewBox="0 0 420 56" aria-hidden="true"><path d="M0 56 C30 14 120 4 210 4 C300 4 390 14 420 56Z" fill="#8a5a3b"/><path d="M90 30 q6 -4 12 0 M300 24 q6 -4 12 0 M200 40 q5 -3 10 0" stroke="#6d4329" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+    </button>
+    <div class="win-copy">
+      <p class="cap" data-in="support" data-at="320">Your three options gave them something to choose from.</p>
+      <div class="bed-row" aria-hidden="true"><div class="buds" data-buds="3"></div><span class="side sprout" data-sprout="proud"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 7–8 · PRESENTING ======================= -->
+<section class="slide s-present" aria-label="Presenting, tips one to three">
+  <header class="sh">
+    <div class="t"><h2 data-in="lead" data-at="0">Presenting: five things to try next time</h2></div>
+    <div class="popper sprout" data-sprout="think" aria-hidden="true"></div>
+  </header>
+  <div class="packets">
+    <div class="pk" data-in="drop" data-at="200"><article class="packet p-butter">
+      <div class="window" aria-hidden="true"><svg viewBox="0 0 120 92"><g transform="translate(60 48)"><g fill="#f6c95b"><ellipse rx="8" ry="18" transform="translate(0 -20)"/><ellipse rx="8" ry="18" transform="rotate(36) translate(0 -20)"/><ellipse rx="8" ry="18" transform="rotate(72) translate(0 -20)"/><ellipse rx="8" ry="18" transform="rotate(108) translate(0 -20)"/><ellipse rx="8" ry="18" transform="rotate(144) translate(0 -20)"/><ellipse rx="8" ry="18" transform="rotate(180) translate(0 -20)"/><ellipse rx="8" ry="18" transform="rotate(216) translate(0 -20)"/><ellipse rx="8" ry="18" transform="rotate(252) translate(0 -20)"/><ellipse rx="8" ry="18" transform="rotate(288) translate(0 -20)"/><ellipse rx="8" ry="18" transform="rotate(324) translate(0 -20)"/></g><circle r="15" fill="#8a5a3b"/><g fill="#6d4329"><circle cx="-5" cy="-4" r="2"/><circle cx="4" cy="-6" r="2"/><circle cx="6" cy="4" r="2"/><circle cx="-4" cy="6" r="2"/></g></g></svg></div>
+      <h3>Lead with the answer.</h3>
+      <p>Open with three sentences: the finding, who it applies to, the choice. Evidence after.</p>
+      <span class="said">(Morgan asked “So which one first?” 15 minutes before the options slide.)</span>
+    </article></div>
+    <div class="pk" data-in="drop" data-at="310"><article class="packet p-rose">
+      <div class="window" aria-hidden="true"><svg viewBox="0 0 120 92"><path d="M60 40 C40 24 36 6 46 4 C56 8 60 24 60 40Z M60 40 C80 24 84 6 74 4 C64 8 60 24 60 40Z" fill="#6fb46c"/><path d="M60 38 C38 38 34 62 46 76 C52 84 56 88 60 90 C64 88 68 84 74 76 C86 62 82 38 60 38Z" fill="#e87a90"/><path d="M50 50 q-4 8 -2 16" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity=".6"/></svg></div>
+      <h3>Leave out any slide you would introduce with a doubt.</h3>
+      <p>Send it later instead.</p>
+    </article></div>
+    <div class="pk" data-in="drop" data-at="400"><article class="packet p-mint">
+      <div class="window" aria-hidden="true"><svg viewBox="0 0 120 92"><path d="M14 60 C30 30 90 30 106 60 C90 78 30 78 14 60Z" fill="#7cc47a"/><path d="M18 60 C34 44 86 44 102 60" fill="none" stroke="#5c9f57" stroke-width="3"/><g fill="#b6e3a0" stroke="#5c9f57" stroke-width="2"><circle cx="38" cy="58" r="9"/><circle cx="60" cy="56" r="10"/><circle cx="82" cy="58" r="9"/></g><path d="M104 58 c8 -6 10 -16 4 -22" stroke="#5c9f57" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div>
+      <h3>Skip the apology at the start.</h3>
+      <p>Kit had already said it was a first look.</p>
+    </article></div>
+  </div>
+</section>
+
+<section class="slide s-present" aria-label="Presenting, tips four and five">
+  <header class="sh">
+    <div class="t"><h2>Presenting: five things to try next time</h2></div>
+    <div class="popper sprout" data-sprout="think" aria-hidden="true"></div>
+  </header>
+  <div class="packets two">
+    <div class="pk" data-in="drop" data-at="80"><article class="packet p-peach">
+      <div class="window" aria-hidden="true"><svg viewBox="0 0 120 92"><path d="M60 26 C52 10 40 8 36 14 M60 26 C62 8 74 4 80 10 M60 26 C70 14 86 16 88 24" stroke="#5c9f57" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M46 28 C58 24 74 26 76 32 C78 50 66 74 58 88 C54 72 44 46 46 28Z" fill="#f4a971"/><path d="M52 40 h10 M54 52 h8 M56 64 h6" stroke="#d4843f" stroke-width="3" stroke-linecap="round"/></svg></div>
+      <h3>Email Jo your process questions before the call,</h3>
+      <p>so the slide says the answer.</p>
+    </article></div>
+    <div class="pk" data-in="drop" data-at="200"><article class="packet p-lav">
+      <div class="window" aria-hidden="true"><svg viewBox="0 0 120 92"><circle cx="60" cy="54" r="30" fill="#e8686f"/><path d="M60 26 l6 -10 l4 12 l12 -2 l-8 9 M60 26 l-6 -10 l-4 12 l-12 -2 l8 9" fill="#6fb46c" stroke="#5c9f57" stroke-width="2" stroke-linejoin="round"/><path d="M44 46 q-2 8 2 14" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none" opacity=".6"/></svg></div>
+      <h3>End with one question that asks for a choice:</h3>
+      <p>“Which of these fits your launch plans best?”</p>
+    </article></div>
+  </div>
+</section>
+
+<!-- ======================= 9 · WORKFLOW ======================= -->
+<section class="slide s-work" aria-label="Workflow: four changes">
+  <header class="sh">
+    <div class="t">
+      <h2 data-in="lead" data-at="0">Workflow: four changes</h2>
+      <p class="note" data-in="support" data-at="120">(most of these are on the AI’s side)</p>
+    </div>
+    <div class="popper sprout" data-sprout="smile" aria-hidden="true"></div>
+  </header>
+  <div class="pots">
+    <div class="pot" data-in="support" data-at="200">
+      <svg viewBox="0 0 150 150" aria-hidden="true"><g data-in="grow" data-at="420"><path d="M75 92 v-10" stroke="#5c9f57" stroke-width="5"/><path d="M75 84 c-8 -12 -20 -10 -22 -4 c8 8 16 8 22 4z M75 82 c6 -12 18 -12 22 -6 c-8 8 -16 9 -22 6z" fill="#7cc47a"/></g><path d="M34 92 h82 l-10 54 h-62z" fill="#d98a5f"/><rect x="28" y="86" width="94" height="18" rx="6" fill="#c97448"/></svg>
+      <div class="tag"><p>Freeze the content the day before.</p><p>Changes after that go into the version you email.</p></div>
+    </div>
+    <div class="pot" data-in="support" data-at="290">
+      <svg viewBox="0 0 150 150" aria-hidden="true"><g data-in="grow" data-at="510"><g class="sway"><path d="M75 92 v-30" stroke="#5c9f57" stroke-width="5"/><path d="M75 68 c-12 -18 -28 -16 -30 -7 c11 11 21 11 30 7z M75 64 c9 -18 25 -18 30 -9 c-11 11 -21 13 -30 9z" fill="#7cc47a"/></g></g><path d="M34 92 h82 l-10 54 h-62z" fill="#e6a37e"/><rect x="28" y="86" width="94" height="18" rx="6" fill="#d98a5f"/></svg>
+      <div class="tag"><p>Make a call version of 8 to 10 pages, separate from the full deck.</p></div>
+    </div>
+    <div class="pot" data-in="support" data-at="360">
+      <svg viewBox="0 0 150 150" aria-hidden="true"><g data-in="grow" data-at="580"><g class="sway b"><path d="M75 92 v-48" stroke="#5c9f57" stroke-width="5"/><path d="M75 74 c-12 -16 -28 -14 -30 -6 c11 10 21 10 30 6z M75 58 c9 -16 25 -16 30 -8 c-11 10 -21 12 -30 8z M75 50 c-8 -14 -20 -12 -22 -6 c8 8 16 8 22 6z" fill="#7cc47a"/></g></g><path d="M34 92 h82 l-10 54 h-62z" fill="#d98a5f"/><rect x="28" y="86" width="94" height="18" rx="6" fill="#c97448"/></svg>
+      <div class="tag"><p>No new features on call day.</p><p>A rehearsal beats a pause button.</p></div>
+    </div>
+    <div class="pot" data-in="support" data-at="410">
+      <svg viewBox="0 0 150 150" aria-hidden="true"><g data-in="grow" data-at="630"><g class="sway c"><path d="M75 92 v-56" stroke="#5c9f57" stroke-width="5"/><path d="M75 76 c-12 -16 -28 -14 -30 -6 c11 10 21 10 30 6z M75 64 c9 -16 25 -16 30 -8 c-11 10 -21 12 -30 8z" fill="#7cc47a"/><path d="M66 36 C64 18 72 12 75 18 C78 12 86 18 84 36 C82 44 68 44 66 36Z" fill="#e87a90"/></g></g><path d="M34 92 h82 l-10 54 h-62z" fill="#e6a37e"/><rect x="28" y="86" width="94" height="18" rx="6" fill="#d98a5f"/></svg>
+      <div class="tag"><p>Before the next phase, agree with the customer what a good result would look like.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 10 · TIME ======================= -->
+<section class="slide s-time" aria-label="Time">
+  <header class="sh">
+    <div class="t"><h2 data-in="lead" data-at="0">Time</h2></div>
+    <div class="popper sprout" data-sprout="calm" aria-hidden="true"></div>
+  </header>
+  <div class="time">
+    <svg viewBox="0 0 230 230" aria-hidden="true">
+      <g class="petals" data-in="spin" data-at="100"><g transform="translate(115 115)"><g fill="#fbd9a6"><ellipse rx="20" ry="30" transform="translate(0 -84)"/><ellipse rx="20" ry="30" transform="rotate(30) translate(0 -84)"/><ellipse rx="20" ry="30" transform="rotate(60) translate(0 -84)"/><ellipse rx="20" ry="30" transform="rotate(90) translate(0 -84)"/><ellipse rx="20" ry="30" transform="rotate(120) translate(0 -84)"/><ellipse rx="20" ry="30" transform="rotate(150) translate(0 -84)"/><ellipse rx="20" ry="30" transform="rotate(180) translate(0 -84)"/><ellipse rx="20" ry="30" transform="rotate(210) translate(0 -84)"/><ellipse rx="20" ry="30" transform="rotate(240) translate(0 -84)"/><ellipse rx="20" ry="30" transform="rotate(270) translate(0 -84)"/><ellipse rx="20" ry="30" transform="rotate(300) translate(0 -84)"/><ellipse rx="20" ry="30" transform="rotate(330) translate(0 -84)"/></g></g></g>
+      <g transform="translate(115 115)">
+        <circle r="72" fill="#fffdf6" stroke="#f2bb48" stroke-width="5"/>
+        <path d="M0 0 L0 -64 A64 64 0 0 1 55.4 -32 Z" fill="#c7e9b5"/>
+        <g stroke="#c9b48a" stroke-width="4" stroke-linecap="round"><path d="M0 -62 v8 M62 0 h-8 M0 62 v-8 M-62 0 h8"/></g>
+      </g>
+      <g class="hands" data-in="hands" data-at="220">
+        <path d="M115 115 L155 92" stroke="#20352a" stroke-width="6" stroke-linecap="round"/>
+        <path d="M115 115 L115 65" stroke="#20352a" stroke-width="4" stroke-linecap="round"/>
+      </g>
+      <circle cx="115" cy="115" r="7" fill="#e87a90"/>
+    </svg>
+    <div>
+      <p data-in="support" data-at="300">Keep the last two to three hours before a call for one timed run-through out loud, and lunch.</p>
+      <p class="claude" data-in="support" data-at="480">Tell Claude a stop time and it will stop.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= 11 · TOMORROW ======================= -->
+<section class="slide s-tomorrow" aria-label="Tomorrow">
+  <header class="sh">
+    <div class="t"><h2 data-in="lead" data-at="0">Tomorrow</h2></div>
+    <div class="popper sprout" data-sprout="proud" aria-hidden="true"></div>
+  </header>
+  <p class="tomorrow-lede" data-in="support" data-at="120"><strong>20 minutes with Kit on next steps.</strong> Bring the three opening sentences:</p>
+  <ol class="stones">
+    <li data-in="stone" data-at="260"><div class="stone"><span class="n" aria-hidden="true">1</span>Teams with a second person on the account renew far more often.</div></li>
+    <li data-in="stone" data-at="380"><div class="stone"><span class="n" aria-hidden="true">2</span>About one team in three is still a <span style="white-space:nowrap">one-person team.</span><svg class="moss" viewBox="0 0 46 20" aria-hidden="true"><path d="M23 18 c-8 -12 -20 -10 -22 -4 c8 6 16 6 22 4z M23 17 c6 -12 18 -12 22 -6 c-8 7 -16 8 -22 6z" fill="#7cc47a"/></svg></div></li>
+    <li data-in="stone" data-at="470"><div class="stone"><span class="n" aria-hidden="true">3</span>Which should they try first: an invite reminder, a setup call, or a tip inside the app?</div></li>
+  </ol>
+</section>
+
+<!-- ======================= 12 · SIGN-OFF ======================= -->
+<section class="slide s-sign" aria-label="Now go and eat something" data-burst=".bowl">
+  <button class="signoff" type="button" data-celebrate>
+    <span class="bowl-row" aria-hidden="true">
+      <svg class="bowl" data-in="lead" data-at="0" viewBox="0 0 340 260">
+        <g class="steam" fill="none" stroke="#b9c9d6" stroke-width="7" stroke-linecap="round">
+          <path d="M120 70 c-14 -16 14 -26 0 -44"/><path d="M170 62 c-14 -16 14 -26 0 -44"/><path d="M220 70 c-14 -16 14 -26 0 -44"/>
+        </g>
+        <path d="M226 50 L300 128" stroke="#c9a06a" stroke-width="8" stroke-linecap="round"/>
+        <path d="M244 40 L314 120" stroke="#b58a52" stroke-width="8" stroke-linecap="round"/>
+        <ellipse cx="170" cy="132" rx="140" ry="30" fill="#f7e3b8"/>
+        <g fill="none" stroke="#e8c76f" stroke-width="7" stroke-linecap="round">
+          <path d="M60 132 c20 -16 40 16 60 0 s40 16 60 0 s40 16 60 0 s30 12 44 2"/>
+          <path d="M70 142 c20 -14 40 14 60 0 s40 14 60 0 s40 14 60 0"/>
+        </g>
+        <g transform="translate(118 122)"><ellipse rx="28" ry="18" fill="#fffdf6"/><circle r="11" fill="#f6b23a"/></g>
+        <g fill="#7cc47a"><circle cx="200" cy="120" r="5"/><circle cx="214" cy="128" r="5"/><circle cx="190" cy="132" r="5"/><circle cx="226" cy="118" r="4"/></g>
+        <path d="M238 112 c10 -4 22 0 24 8 c-10 6 -20 4 -24 -8z" fill="#f4a3b3"/>
+        <path d="M30 136 C34 214 96 248 170 248 C244 248 306 214 310 136 C280 158 60 158 30 136Z" fill="#e87a90"/>
+        <path d="M66 176 c20 10 40 10 60 0 s40 -10 60 0 s40 10 60 0" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".6"/>
+        <ellipse cx="170" cy="250" rx="54" ry="8" fill="#c9566f"/>
+      </svg>
+    </span>
+    <h2 data-in="support" data-at="260">Now go and eat something.</h2>
+  </button>
+  <div class="garden-strip strip-clone" aria-hidden="true"><div class="hero-sprout sprout" data-sprout="yum"></div></div>
+</section>
+
+</div>
+</div>
+<div class="count" id="count" aria-live="polite"><b>1</b> / 12</div>
+
+<script>
+/* ---------- the sprout mascot (from the garden page): one body, several faces ---------- */
+(function () {
+  "use strict";
+  var INK = "#23372b", MOUTH = "#8a3b46";
+  var eyes = {
+    open: '<circle cx="46" cy="88" r="4.8" fill="' + INK + '"/><circle cx="74" cy="88" r="4.8" fill="' + INK + '"/><circle cx="47.6" cy="86.3" r="1.5" fill="#fff"/><circle cx="75.6" cy="86.3" r="1.5" fill="#fff"/>',
+    big: '<circle cx="46" cy="87" r="6.4" fill="' + INK + '"/><circle cx="74" cy="87" r="6.4" fill="' + INK + '"/><circle cx="48" cy="84.6" r="2.1" fill="#fff"/><circle cx="76" cy="84.6" r="2.1" fill="#fff"/>',
+    up: '<circle cx="47" cy="85" r="4.8" fill="' + INK + '"/><circle cx="75" cy="85" r="4.8" fill="' + INK + '"/><circle cx="48.6" cy="83.3" r="1.5" fill="#fff"/><circle cx="76.6" cy="83.3" r="1.5" fill="#fff"/>',
+    shut: '<path d="M40 87 q6 5.5 12 0 M68 87 q6 5.5 12 0" fill="none" stroke="' + INK + '" stroke-width="3.2" stroke-linecap="round"/>',
+    joy: '<path d="M40 90 q6 -7 12 0 M68 90 q6 -7 12 0" fill="none" stroke="' + INK + '" stroke-width="3.2" stroke-linecap="round"/>'
+  };
+  var mouths = {
+    small: '<path d="M55 102 q5 4 10 0" fill="none" stroke="' + INK + '" stroke-width="3" stroke-linecap="round"/>',
+    smile: '<path d="M51 100 q9 9 18 0" fill="none" stroke="' + INK + '" stroke-width="3.2" stroke-linecap="round"/>',
+    grin: '<path d="M49 99 q11 14 22 0 z" fill="' + MOUTH + '"/><path d="M54 104.5 q6 4 12 0" fill="#f2a3a8"/>',
+    o: '<ellipse cx="60" cy="104" rx="4.4" ry="5.4" fill="' + MOUTH + '"/>',
+    hmm: '<path d="M54 103 q4 -3 8 0 t8 0" fill="none" stroke="' + INK + '" stroke-width="3" stroke-linecap="round"/>'
+  };
+  var FACES = {
+    shy: ["shut", "small"], smile: ["open", "smile"], wow: ["big", "o"], proud: ["joy", "grin"],
+    calm: ["shut", "smile"], think: ["up", "hmm"], yum: ["joy", "grin"]
+  };
+  function faceSvg(mood) { var f = FACES[mood] || FACES.smile; return eyes[f[0]] + mouths[f[1]]; }
+  function sproutSvg(mood) {
+    return '<svg viewBox="0 0 120 140" aria-hidden="true">' +
+      '<path d="M60 56 C60 46 59 38 60 28" stroke="#5c9f57" stroke-width="5" fill="none" stroke-linecap="round"/>' +
+      '<path d="M60 32 C42 10 18 14 12 28 C28 42 48 42 60 32Z" fill="#7cc47a"/>' +
+      '<path d="M60 30 C40 22 26 24 20 28" stroke="#5c9f57" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".6"/>' +
+      '<path d="M60 28 C76 4 104 6 110 20 C94 36 72 36 60 28Z" fill="#94d38f"/>' +
+      '<path d="M60 28 C78 20 94 18 102 20" stroke="#5c9f57" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".6"/>' +
+      '<ellipse cx="44" cy="134" rx="11" ry="5" fill="#5e9e5c"/><ellipse cx="76" cy="134" rx="11" ry="5" fill="#5e9e5c"/>' +
+      '<ellipse cx="60" cy="94" rx="43" ry="40" fill="#c4e6aa" stroke="#5e9e5c" stroke-width="3.5"/>' +
+      '<path d="M32 76 q8 -14 22 -18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".55"/>' +
+      '<ellipse cx="35" cy="101" rx="7.5" ry="4.6" fill="#f2a3a8" opacity=".85"/><ellipse cx="85" cy="101" rx="7.5" ry="4.6" fill="#f2a3a8" opacity=".85"/>' +
+      '<g class="face">' + faceSvg(mood) + '</g></svg>';
+  }
+  var MOUND = '<svg class="mound" viewBox="0 0 128 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 C10 8 40 2 64 2 C88 2 118 8 128 34Z" fill="#8a5a3b"/><path d="M26 16 q4 -3 8 0 M84 12 q4 -3 8 0 M58 22 q3 -2 6 0" stroke="#6d4329" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>';
+  document.querySelectorAll("[data-sprout]").forEach(function (el) {
+    var inner = '<div class="sp"><div class="hop">' + sproutSvg("shy") + "</div></div>";
+    el.innerHTML = el.classList.contains("popper") ? inner + MOUND : inner;
+  });
+  window.Sprout = { face: function (el, mood) { var g = el.querySelector(".face"); if (g) g.innerHTML = faceSvg(mood); } };
+})();
+</script>
+
+<script>
+/* ---------- deck: fit, navigation, choreographed entrances ---------- */
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  var deck = document.getElementById("deck"), stage = document.getElementById("stage");
+  var slides = [].slice.call(document.querySelectorAll(".slide"));
+  var countEl = document.getElementById("count");
+  var N = slides.length, KEY = "after-the-call-demo-garden:slide";
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var cur = 0, frag = 0, anims = [], timers = [];
+
+  /* the sign-off reuses the title's garden strip (without the sprout and sign) */
+  var clone = document.querySelector("#strip svg").cloneNode(true);
+  var sign = clone.querySelector(".rain-sign"); if (sign) sign.remove();
+  var host = document.querySelector(".strip-clone"); host.insertBefore(clone, host.firstChild);
+
+  /* the little row of flowers under each win: bloomed so far, buds still to come */
+  var BUD = '<svg class="bud" viewBox="0 0 60 120"><path d="M30 120 C32 100 28 80 30 50" stroke="#5c9f57" stroke-width="6" fill="none"/><path d="M30 96 C18 86 10 90 8 98 C18 104 26 102 30 96Z" fill="#94d38f"/><path d="M30 54 C18 46 18 22 30 12 C42 22 42 46 30 54Z" fill="#a8d59a"/><path d="M30 54 C24 44 24 28 30 20" stroke="#7cc47a" stroke-width="3" fill="none"/></svg>';
+  var flowers = [1, 2, 3].map(function (i) { return document.querySelector('[data-flower="' + i + '"]'); });
+  document.querySelectorAll("[data-buds]").forEach(function (row) {
+    var k = +row.dataset.buds;
+    for (var i = 1; i <= 3; i++) {
+      if (i > k) { row.insertAdjacentHTML("beforeend", BUD); continue; }
+      var f = flowers[i - 1].cloneNode(true);
+      f.removeAttribute("class"); f.removeAttribute("data-flower");
+      f.querySelectorAll("[data-in]").forEach(function (n) { n.removeAttribute("data-in"); n.removeAttribute("data-at"); });
+      if (i === k) { f.setAttribute("data-in", "pop-in"); f.setAttribute("data-at", "600"); }
+      row.appendChild(f);
+    }
+  });
+
+  /* ---- fit the 1920x1080 stage, or switch to reflow on small screens ---- */
+  function fit() {
+    var w = innerWidth, h = innerHeight, s = Math.min(w / 1920, h / 1080);
+    var reflow = s < 0.5;
+    root.classList.toggle("reflow", reflow);
+    stage.style.transform = reflow ? "" : "translate(" + (w - 1920 * s) / 2 + "px," + (h - 1080 * s) / 2 + "px) scale(" + s + ")";
+    if (window.DeckFloaters) window.DeckFloaters.resize();
+  }
+  addEventListener("resize", fit, { passive: true });
+  fit();
+
+  /* ---- choreography: who moves, how far, how long ---- */
+  var SPRING = "cubic-bezier(.34,1.5,.64,1)", SOFT = "cubic-bezier(.2,1.12,.36,1)", OUT = "cubic-bezier(.23,1,.32,1)";
+  function K(kind, d) {
+    switch (kind) {
+      case "lead":    return [[{ opacity: 0, transform: "translate(" + 56 * d + "px,10px)" }, { opacity: 1, transform: "translate(0,0)" }], 640, SOFT];
+      case "support": return [[{ opacity: 0, transform: "translate(" + 14 * d + "px,30px)" }, { opacity: 1, transform: "translate(0,0)" }], 540, SOFT];
+      case "deco":    return [[{ opacity: 0 }, { opacity: 1 }], 460, OUT];
+      case "plant":   return [[{ opacity: 0, transform: "translateY(-90px) rotate(-5deg)" }, { opacity: 1, offset: .4 }, { opacity: 1, transform: "translateY(0) rotate(0)" }], 600, SPRING];
+      case "drop":    return [[{ opacity: 0, transform: "translateY(-70px) rotate(4deg) scale(.95)" }, { opacity: 1, offset: .4 }, { opacity: 1, transform: "translateY(0) rotate(0) scale(1)" }], 600, SPRING];
+      case "grow":    return [[{ opacity: 0, transform: "scale(.15)" }, { opacity: 1, offset: .3 }, { opacity: 1, transform: "scale(1)" }], 560, SPRING];
+      case "bloom":   return [[{ opacity: 0, transform: "scale(0) rotate(-70deg)" }, { opacity: 1, offset: .3 }, { opacity: 1, transform: "scale(1) rotate(0)" }], 660, SPRING];
+      case "pop-in":  return [[{ opacity: 0, transform: "scale(.55)" }, { opacity: 1, transform: "scale(1)" }], 560, SPRING];
+      case "stone":   return [[{ opacity: 0, transform: "translateY(44px) scale(.84)" }, { opacity: 1, transform: "translateY(0) scale(1)" }], 600, SPRING];
+      case "spin":    return [[{ opacity: 0, transform: "rotate(-120deg) scale(.7)" }, { opacity: 1, transform: "rotate(0) scale(1)" }], 760, SOFT];
+      case "hands":   return [[{ transform: "rotate(-330deg)" }, { transform: "rotate(0)" }], 880, SOFT];
+    }
+    return [[{ opacity: 0 }, { opacity: 1 }], 400, OUT];
+  }
+  function run(el, kf, dur, delay, ease) {
+    var a = el.animate(kf, { duration: dur, delay: delay, easing: ease, fill: "both" });
+    anims.push(a); return a;
+  }
+  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function stopAll() {
+    anims.forEach(function (a) { try { a.cancel(); } catch (e) {} }); anims = [];
+    timers.forEach(clearTimeout); timers = [];
+  }
+  function hidden(el) { return !!el.closest(".hid"); }
+
+  function hop(sp, delay) {
+    var h = sp.querySelector(".hop"); if (!h || reduce) return;
+    run(h, [
+      { transform: "translateY(0) scale(1,1)" },
+      { transform: "translateY(3px) scale(1.07,.9)", offset: .16 },
+      { transform: "translateY(-24%) scale(.95,1.06)", offset: .48 },
+      { transform: "translateY(0) scale(1.05,.95)", offset: .8 },
+      { transform: "translateY(0) scale(1,1)" }
+    ], 560, delay, "ease-in-out");
+  }
+  function wakeSprouts(s) {
+    s.querySelectorAll(".sprout").forEach(function (el) {
+      var sp = el.querySelector(".sp"), mood = el.dataset.sprout;
+      if (reduce) { Sprout.face(el, mood); run(el, [{ opacity: 0 }, { opacity: 1 }], 280, 0, "ease-out"); return; }
+      Sprout.face(el, "shy");
+      if (el.classList.contains("popper")) run(sp, [{ transform: "translateY(80%)" }, { transform: "translateY(-10%)" }], 600, 160, SPRING);
+      else run(sp, [{ opacity: 0, transform: "scale(.3)" }, { opacity: 1, offset: .3 }, { opacity: 1, transform: "scale(1)" }], 600, 260, SPRING);
+      sp.style.transformOrigin = "50% 100%";
+      later(function () { Sprout.face(el, mood); }, 560);
+      hop(sp, 640);
+    });
+  }
+
+  function burstAt(sel, ms) {
+    var t = slides[cur].querySelector(sel); if (!t || !window.SparkleThatPage || !SparkleThatPage.clickConfetti) return;
+    var fire = function (dx, dy) {
+      var r = t.getBoundingClientRect(); if (!r.width) return;
+      SparkleThatPage.clickConfetti.burst(r.left + r.width / 2 + dx * r.width, r.top + r.height / 2 + dy * r.height);
+    };
+    if (reduce) { later(function () { fire(0, 0); }, 300); return; }
+    later(function () { fire(0, 0); }, ms);
+    later(function () { fire(-.25, .1); }, ms + 140);
+    later(function () { fire(.25, .05); }, ms + 230);
+  }
+
+  function setHint() {
+    var s = slides[cur], h = s.querySelector(".hint"); if (!h) return;
+    h.classList.toggle("gone", frag >= s.querySelectorAll("[data-frag]").length);
+  }
+
+  function enter(i, dir) {
+    stopAll();
+    var s = slides[i], frags = s.querySelectorAll("[data-frag]");
+    frag = dir < 0 ? frags.length : 0;
+    frags.forEach(function (f) { f.classList.toggle("hid", +f.dataset.frag > frag); });
+    setHint();
+    var els = [].filter.call(s.querySelectorAll("[data-in]"), function (el) { return !hidden(el); });
+    if (reduce) {
+      els.forEach(function (el) { run(el, [{ opacity: 0 }, { opacity: 1 }], 280, 0, "ease-out"); });
+    } else {
+      els.forEach(function (el) {
+        var k = K(el.dataset.in, dir < 0 ? -1 : 1);
+        var at = +el.dataset.at || 0;
+        /* a revisited quotes slide brings all four markers in, a touch quicker */
+        if (dir < 0 && el.dataset.frag) at = 200 + 70 * +el.dataset.frag;
+        run(el, k[0], k[1], at, k[2]);
+      });
+    }
+    wakeSprouts(s);
+    if (s.dataset.burst) burstAt(s.dataset.burst, 760);
+  }
+
+  function show(i, dir) {
+    slides.forEach(function (s, j) { s.classList.toggle("on", j === i); s.setAttribute("aria-hidden", j === i ? "false" : "true"); });
+    cur = i;
+    slides[i].scrollTop = 0;
+    countEl.innerHTML = "<b>" + (i + 1) + "</b> / " + N;
+    try { localStorage.setItem(KEY, String(i)); } catch (e) {}
+    if (window.DeckProgress) window.DeckProgress((i + 1) / N);
+    enter(i, dir);
+  }
+  function go(i, dir) {
+    i = Math.max(0, Math.min(N - 1, i));
+    if (i === cur) { var p = slides[cur].querySelector(".sprout .sp"); if (p) hop(p, 0); return; }
+    show(i, dir);
+  }
+  function next() {
+    var s = slides[cur], f = s.querySelector('[data-frag="' + (frag + 1) + '"]');
+    if (f) {
+      frag++; f.classList.remove("hid"); setHint();
+      if (reduce) run(f, [{ opacity: 0 }, { opacity: 1 }], 280, 0, "ease-out");
+      else { var k = K("plant", 1); run(f, k[0], k[1], 0, k[2]); var sp = s.querySelector(".sprout .sp"); if (sp) hop(sp, 260); }
+      return;
+    }
+    go(cur + 1, 1);
+  }
+  function prev() {
+    var s = slides[cur], f = s.querySelector('[data-frag="' + frag + '"]');
+    if (f) { frag--; f.classList.add("hid"); setHint(); return; }
+    go(cur - 1, -1);
+  }
+
+  /* ---- input ---- */
+  addEventListener("keydown", function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var k = e.key, onButton = document.activeElement && document.activeElement.tagName === "BUTTON";
+    if (k === "ArrowRight" || k === "ArrowDown" || k === "PageDown" || (k === " " && !onButton)) { e.preventDefault(); next(); }
+    else if (k === "ArrowLeft" || k === "ArrowUp" || k === "PageUp") { e.preventDefault(); prev(); }
+    else if (k === "Home") { e.preventDefault(); go(0, -1); }
+    else if (k === "End") { e.preventDefault(); go(N - 1, 1); }
+    else if (k === "f" || k === "F") {
+      try { if (document.fullscreenElement) document.exitFullscreen(); else root.requestFullscreen(); } catch (err) {}
+    }
+  });
+  deck.addEventListener("click", function (e) {
+    if (e.target.closest("button, a, input, label, .sprout")) return;
+    if (String(getSelection && getSelection())) return;
+    if (e.clientX < innerWidth / 2) prev(); else next();
+  });
+  var tx = 0, ty = 0, tt = 0;
+  deck.addEventListener("touchstart", function (e) { var t = e.changedTouches[0]; tx = t.clientX; ty = t.clientY; tt = Date.now(); }, { passive: true });
+  deck.addEventListener("touchend", function (e) {
+    var t = e.changedTouches[0], dx = t.clientX - tx, dy = t.clientY - ty;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4 && Date.now() - tt < 800) { if (dx < 0) next(); else prev(); }
+  }, { passive: true });
+  /* tap the sprout: it hops. tap a flower: it wiggles (its petals come from click_confetti) */
+  document.querySelectorAll(".sprout").forEach(function (el) {
+    el.addEventListener("click", function () { var sp = el.querySelector(".sp"); if (sp) hop(sp, 0); });
+  });
+  document.querySelectorAll(".bloom").forEach(function (b) {
+    b.addEventListener("click", function () {
+      if (reduce) return;
+      var h = b.querySelector(".head");
+      h.animate([{ transform: "rotate(0)" }, { transform: "rotate(-9deg) scale(1.06)" }, { transform: "rotate(7deg) scale(1.04)" }, { transform: "rotate(0)" }], { duration: 520, easing: "ease-in-out", composite: "add" });
+    });
+  });
+
+  /* ---- start where the reader left off ---- */
+  var start = 0;
+  try { var v = parseInt(localStorage.getItem(KEY), 10); if (v >= 0 && v < N) start = v; } catch (e) {}
+  window.Deck = {
+    go: function (i) { go(i, i >= cur ? 1 : -1); }, next: next, prev: prev,
+    get index() { return cur; }, get frag() { return frag; },
+    freeze: function (ms) { anims.forEach(function (a) { try { a.pause(); a.currentTime = Math.max(0, ms - 0); } catch (e) {} }); }
+  };
+  cur = -1;
+  show(start, 1);
+})();
+</script>
+
+<script>
+/* ambient_floaters.js — sparkle-that-page 1.1.0 (inlined). Two local changes, as on the garden page and one more:
+ * the "leaves" variant draws a small inline SVG leaf instead of the shipped emoji glyph, and the layer lives inside
+ * the slide stage (the .floaters element) rather than on <body>, so the leaves drift behind the slide content and are
+ * letterboxed with it. Positions use that layer's own size instead of innerWidth / innerHeight. */
+(function () {
+  "use strict";
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var ds = document.documentElement.dataset;
+  var N = Math.max(1, Math.min(60, parseInt(ds.floatersCount, 10) || 18));
+  var LEAF_COLORS = ["#9ccf8f", "#7fbf7a", "#b9dca0", "#a8d59a", "#f4b8c4"];
+  var layer = document.querySelector(".floaters");
+  var W = layer.clientWidth, H = layer.clientHeight;
+  function paint(el) {
+    var lc = LEAF_COLORS[(Math.random() * LEAF_COLORS.length) | 0];
+    el.innerHTML = '<svg width="1em" height="1em" viewBox="0 0 24 24" style="display:block"><path d="M3 21 C3 9 11 3 21 3 C21 13 15 21 3 21Z" fill="' + lc + '"/><path d="M4 20 C9 14 13 10 18 6" stroke="rgba(60,110,60,.45)" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>';
+  }
+  var big = W > 1000 ? 1.6 : 1;
+  var items = [];
+  function reset(p, top) {
+    p.x = Math.random() * W; p.y = top ? -30 : Math.random() * H;
+    p.vy = (0.3 + Math.random() * 0.8) * big; p.vx = (Math.random() - 0.5) * 0.5; p.sway = Math.random() * 6.28;
+    p.size = (10 + Math.random() * 12) * big;
+    p.el.style.fontSize = p.size + "px";
+    p.el.style.opacity = String(0.4 + Math.random() * 0.5);
+  }
+  for (var i = 0; i < N; i++) {
+    var el = document.createElement("span");
+    el.style.cssText = "position:absolute;left:0;top:0;will-change:transform";
+    paint(el); layer.appendChild(el);
+    var p = { el: el }; reset(p, false); items.push(p);
+  }
+  var raf, last = 0;
+  function tick(now) {
+    var k = last ? Math.min((now - last) / 16.667, 3) : 1; last = now;
+    for (var i = 0; i < items.length; i++) {
+      var p = items[i]; p.sway += 0.02 * k; p.y += p.vy * k; p.x += (p.vx + Math.sin(p.sway) * 0.4) * k;
+      if (p.y > H + 30) reset(p, true);
+      p.el.style.transform = "translate(" + p.x + "px," + p.y + "px) rotate(" + (p.sway * 30) + "deg)";
+    }
+    raf = requestAnimationFrame(tick);
+  }
+  raf = requestAnimationFrame(tick);
+  window.DeckFloaters = { resize: function () { W = layer.clientWidth; H = layer.clientHeight; big = W > 1000 ? 1.6 : 1; } };
+  window.SparkleThatPage = window.SparkleThatPage || {};
+  window.SparkleThatPage.ambientFloaters = { destroy: function () { cancelAnimationFrame(raf); layer.innerHTML = ""; } };
+})();
+</script>
+
+<script>
+/* scroll_indicator.js, variant "comet" — sparkle-that-page 1.1.0 (inlined). Recoloured to garden greens running into
+ * sunshine, as on the page; one more local change: a deck does not scroll, so the comet tracks the slide number. */
+(function () {
+  "use strict";
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var el = document.createElement("div");
+  el.setAttribute("aria-hidden", "true");
+  el.style.cssText = "position:fixed;top:0;left:0;height:5px;width:100%;z-index:2147483601;pointer-events:none";
+  var bar = document.createElement("div");
+  bar.style.cssText = "height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#b9dca0,#7cc47a,#4aad9a,#f2c75c)" + (reduce ? "" : ";transition:transform .6s cubic-bezier(.23,1,.32,1)");
+  var head = document.createElement("span"); head.textContent = "✦";
+  head.style.cssText = "position:absolute;left:-8px;top:-8px;font-size:16px;color:#e8a92c;text-shadow:0 0 6px #ffe7a3" + (reduce ? "" : ";transition:transform .6s cubic-bezier(.23,1,.32,1)");
+  el.appendChild(bar); el.appendChild(head); document.body.appendChild(el);
+  var p = 0;
+  function render() { bar.style.transform = "scaleX(" + p + ")"; head.style.transform = "translateX(" + (p * document.documentElement.clientWidth) + "px)"; }
+  window.DeckProgress = function (v) { p = v; render(); };
+  if (window.Deck) window.DeckProgress((window.Deck.index + 1) / document.querySelectorAll(".slide").length);
+  addEventListener("resize", render, { passive: true });
+})();
+</script>
+
+<!-- sparkle-that-page 1.1.0 effects, inlined exactly as on the garden page -->
+<script>
+/* sparkle_trail.js — sparkle-that-page (inlined verbatim). Sparse by default, meadow palette, no-op on touch / reduced motion. */
+(function () {
+  "use strict";
+  if (!matchMedia("(pointer: fine)").matches) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var PALETTES = {
+    candy:  ["#f472b6", "#c084fc", "#fde047", "#a5b4fc", "#fb7185"],
+    neon:   ["#2ee6ff", "#b6ff3d", "#ff5ad0", "#ffb43d", "#ffffff"],
+    meadow: ["#e87a90", "#6a5acd", "#4aad9a", "#d4943a", "#b8a8e0", "#f4c4a0"]
+  };
+  var GLYPH = { sparkle: "✦", star: "★", heart: "♥", pixel: "✦", fairydust: "•" };
+  var ds = document.documentElement.dataset;
+  var variant = ds.trail || "sparkle";
+  var paletteName = ds.palette || "candy";
+  function tokens() { var cs = getComputedStyle(document.documentElement), o = []; for (var i = 1; i <= 6; i++) { var v = cs.getPropertyValue("--stp-c" + i).trim(); if (v) o.push(v); } return o.length ? o : null; }
+  var palette = tokens() || PALETTES[paletteName] || PALETTES.candy;
+  var glyph = GLYPH[variant] || GLYPH.sparkle;
+  var glow = paletteName === "neon" || variant === "fairydust";
+  var fontSize = variant === "fairydust" ? 11 : 14;
+
+  var layer = document.createElement("div");
+  layer.style.cssText = "position:fixed;inset:0;pointer-events:none;z-index:2147483600;overflow:hidden";
+  document.body.appendChild(layer);
+
+  var MAX = 80, pool = [], live = [];
+  for (var i = 0; i < MAX; i++) {
+    var s = document.createElement("span");
+    s.textContent = glyph;
+    s.style.cssText = "position:absolute;will-change:transform,opacity;font-size:" + fontSize + "px;opacity:0;transform:translate(-50%,-50%)";
+    if (variant === "pixel") s.style.fontFamily = "monospace";
+    layer.appendChild(s); pool.push(s);
+  }
+  function spawn(x, y, n, spread) {
+    for (var k = 0; k < n && pool.length; k++) {
+      var el = pool.pop();
+      var c = palette[(Math.random() * palette.length) | 0];
+      el.style.color = c;
+      el.style.textShadow = glow ? "0 0 6px " + c : "none";
+      var ang = Math.random() * Math.PI * 2, dist = Math.random() * spread;
+      live.push({ el: el, x: x, y: y, vx: Math.cos(ang) * dist, vy: Math.sin(ang) * dist - 0.4, life: 0, ttl: 36 + Math.random() * 20, rot: Math.random() * 360 });
+      el.style.opacity = "1";
+    }
+  }
+  var lastMove = 0, mx = 0, my = 0, sx = 0, sy = 0, moved = false, fresh = true, last = 0;
+  function onMove(e) { mx = e.clientX; my = e.clientY; moved = true; }
+  function onClick(e) { spawn(e.clientX, e.clientY, 14, 6); }
+  addEventListener("mousemove", onMove, { passive: true });
+  addEventListener("click", onClick, { passive: true });
+
+  var raf;
+  function tick(now) {
+    var k = last ? Math.min((now - last) / 16.667, 3) : 1; last = now; // 1 = one 60 Hz frame
+    if (moved) {
+      var storm = ds.trailDensity === "storm";
+      if (storm ? now - lastMove > 16 : fresh || Math.hypot(mx - sx, my - sy) >= 24) { spawn(mx, my, 2, 2); lastMove = now; sx = mx; sy = my; fresh = false; moved = false; }
+    }
+    for (var i = live.length - 1; i >= 0; i--) {
+      var p = live[i]; p.life += k; p.x += p.vx * k; p.y += p.vy * k; p.vy += 0.12 * k; p.vx *= Math.pow(0.96, k);
+      var t = p.life / p.ttl;
+      p.el.style.transform = "translate(" + p.x + "px," + p.y + "px) scale(" + (1 - t) + ") rotate(" + p.rot + "deg)";
+      p.el.style.opacity = String(1 - t);
+      if (p.life >= p.ttl) { p.el.style.opacity = "0"; pool.push(p.el); live.splice(i, 1); }
+    }
+    raf = requestAnimationFrame(tick);
+  }
+  raf = requestAnimationFrame(tick);
+
+  window.SparkleThatPage = window.SparkleThatPage || {};
+  window.SparkleThatPage.sparkleTrail = { destroy: function () { cancelAnimationFrame(raf); removeEventListener("mousemove", onMove); removeEventListener("click", onClick); layer.remove(); } };
+})();
+</script>
+<script>
+/* tab_title_peekaboo.js — sparkle-that-page (inlined verbatim). Gentle text-only message; favicon left alone. */
+(function () {
+  "use strict";
+  var ds = document.documentElement.dataset;
+  var awayMsg = ds.peekabooMsg || "come back! 🥺";
+  var awayEmoji = ds.peekabooFavicon || ""; // empty = don't touch favicon
+  var origTitle = document.title, origHref = null, link = null;
+
+  if (awayEmoji) {
+    link = document.querySelector('link[rel~="icon"]');
+    if (!link) { link = document.createElement("link"); link.rel = "icon"; document.head.appendChild(link); }
+    origHref = link.getAttribute("href");
+  }
+  function emojiIcon(e) {
+    return "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">' + e + "</text></svg>");
+  }
+  function onVis() {
+    if (document.hidden) { document.title = awayMsg; if (link) link.setAttribute("href", emojiIcon(awayEmoji)); }
+    else { document.title = origTitle; if (link && origHref != null) link.setAttribute("href", origHref); else if (link) link.removeAttribute("href"); }
+  }
+  document.addEventListener("visibilitychange", onVis);
+
+  window.SparkleThatPage = window.SparkleThatPage || {};
+  window.SparkleThatPage.tabPeekaboo = { destroy: function () { document.removeEventListener("visibilitychange", onVis); document.title = origTitle; if (link && origHref != null) link.setAttribute("href", origHref); } };
+})();
+</script>
+<script>
+/* click_confetti.js — sparkle-that-page (inlined verbatim). Petals in the meadow palette, only on [data-celebrate]:
+ * the three flowers and the sign-off. One fading glyph under reduced motion. */
+(function () {
+  "use strict";
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var ds = document.documentElement.dataset, DEFAULT_ON = "[data-celebrate], [data-confetti]";
+  var variant = ds.confetti || "heart", paletteName = ds.palette || null;
+  var THEME = {
+    candy:  ["#f472b6", "#c084fc", "#fde047", "#a5b4fc", "#fb7185"],
+    neon:   ["#2ee6ff", "#b6ff3d", "#ff5ad0", "#ffb43d", "#ffffff"],
+    meadow: ["#e87a90", "#6a5acd", "#4aad9a", "#d4943a", "#b8a8e0", "#f4c4a0"]
+  };
+  var PALETTE = { heart: ["#f472b6", "#fb7185", "#fda4af"], star: ["#fde047", "#facc15", "#fbbf24"], confetti: ["#f472b6", "#a5b4fc", "#fde047", "#86efac", "#fdba74"], petal: ["#fbcfe8", "#f9a8d4", "#fecdd3"], pixel: ["#c084fc", "#fde047", "#f472b6"] };
+  var GLYPH = { heart: "♥", star: "★", petal: "❀", pixel: "■" };
+  function tokens() { var cs = getComputedStyle(document.documentElement), o = []; for (var i = 1; i <= 6; i++) { var v = cs.getPropertyValue("--stp-c" + i).trim(); if (v) o.push(v); } return o.length ? o : null; }
+  var colors = (paletteName && (tokens() || THEME[paletteName])) || PALETTE[variant] || PALETTE.heart;
+  var glow = paletteName === "neon";
+
+  var cv = document.createElement("canvas"), ctx = cv.getContext("2d"), dpr = 1;
+  cv.style.cssText = "position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483602";
+  function size() { dpr = window.devicePixelRatio || 1; cv.width = Math.round(innerWidth * dpr); cv.height = Math.round(innerHeight * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  size(); addEventListener("resize", size, { passive: true });
+  document.body.appendChild(cv);
+
+  var parts = [], raf = 0, last = 0;
+  function burst(x, y) {
+    if (reduce) { // fewer and gentler, not zero: one glyph fades in place
+      parts.push({ x: x, y: y, vx: 0, vy: 0, life: 0, ttl: 24, c: colors[0], s: 8, r: 0, vr: 0, g: GLYPH[variant] || GLYPH.heart, still: 1 });
+    } else {
+      for (var i = 0; i < 24; i++) {
+        var a = Math.random() * Math.PI * 2, sp = 3 + Math.random() * 6;
+        parts.push({ x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 3, life: 0, ttl: 50 + Math.random() * 30, c: colors[i % colors.length], s: 7 + Math.random() * 6, r: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.3, g: GLYPH[variant] });
+      }
+    }
+    if (!raf) { last = 0; raf = requestAnimationFrame(tick); }
+  }
+  function tick(now) {
+    var k = last ? Math.min((now - last) / 16.667, 3) : 1; last = now; // 1 = one 60 Hz frame
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    for (var i = parts.length - 1; i >= 0; i--) {
+      var p = parts[i]; p.life += k;
+      if (!p.still) { p.x += p.vx * k; p.y += p.vy * k; p.vy += 0.18 * k; p.vx *= Math.pow(0.99, k); p.r += p.vr * k; }
+      var t = p.life / p.ttl; ctx.save(); ctx.globalAlpha = Math.max(0, 1 - t); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c;
+      if (glow) { ctx.shadowColor = p.c; ctx.shadowBlur = 12; }
+      if (p.g) { ctx.font = p.s * 2 + "px serif"; ctx.textAlign = "center"; ctx.fillText(p.g, 0, 0); }
+      else { ctx.fillRect(-p.s / 2, -p.s / 2, p.s, p.s * 0.6); }
+      ctx.restore();
+      if (p.life >= p.ttl) parts.splice(i, 1);
+    }
+    raf = parts.length ? requestAnimationFrame(tick) : 0;
+  }
+  function onClick(e) {
+    var on = ds.confettiOn || DEFAULT_ON;
+    if (on !== "*") { var t = e.target.closest && e.target.closest(on); if (!t || t === document.documentElement) return; } // <html data-confetti> is the variant, not a target
+    burst(e.clientX, e.clientY);
+  }
+  addEventListener("click", onClick, { passive: true });
+
+  window.SparkleThatPage = window.SparkleThatPage || {};
+  window.SparkleThatPage.clickConfetti = { burst: burst, destroy: function () { removeEventListener("click", onClick); removeEventListener("resize", size); cancelAnimationFrame(raf); cv.remove(); } };
+})();
+</script>
+</body>
+</html>

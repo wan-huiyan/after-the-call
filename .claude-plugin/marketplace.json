@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "wan-huiyan-after-the-call",
+  "description": "after-the-call: a kind, specific debrief after a presentation or client call, and a cute cheer-up page of the learnings if you want one.",
+  "owner": { "name": "Huiyan Wan" },
+  "plugins": [
+    {
+      "name": "after-the-call",
+      "source": "./plugins/after-the-call",
+      "description": "Debrief a presentation from its transcript and slides: what went well, what to change, speech-to-text errors caught before anyone gets blamed.",
+      "version": "1.0.1"
+    }
+  ]
+}
