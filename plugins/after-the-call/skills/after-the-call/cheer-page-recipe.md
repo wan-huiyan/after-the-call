@@ -31,6 +31,8 @@ Show three directions before building, and record the person's choice in `direct
 
 If they love more than one, keep them all (separate files).
 
+Every style gets its own cute tab icon, drawn from its mascot (the seedling, the rice ball, the pixel face). Put it inline as `<link rel="icon" href="data:image/svg+xml,...">`, so the file still needs nothing beside it. Draw it for 16 px: thicker outlines, bigger eyes, no fine detail. [cutify-that-tab](https://github.com/wan-huiyan/cutify-this) does this well if installed. A page without one shows the browser's grey globe in the tab, and that is the first thing the person sees.
+
 Effects come from [sparkle-that-page](https://github.com/wan-huiyan/cutify-this) if installed, or hand-written CSS: confetti only on celebratory elements, floaters behind the content, and everything off under `prefers-reduced-motion`.
 
 ## 3. Slide version (if asked)
@@ -45,5 +47,6 @@ Effects come from [sparkle-that-page](https://github.com/wan-huiyan/cutify-this)
 
 - Screenshot every slide at 1920 and 390, plus one run with reduced motion. Make a contact sheet and look at it yourself.
 - Step through every reveal step and screenshot the last step. A frame that is still empty in a still image may be a reveal that never fires.
+- Every file has its own `rel="icon"`. Render each icon at 16 and 32 px on a light and a dark background, side by side, and look at them: each should read as its mascot.
 - No page errors in the browser console (and `design_lint.py check` if huashu-design is installed).
 - Open the files for the person with `open`, and tell them in one line how to move through them.

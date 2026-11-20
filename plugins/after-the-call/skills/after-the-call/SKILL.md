@@ -63,4 +63,5 @@ If memory or persona files exist for this client, offer to update them with what
 ## Changelog
 
 - 1.0.1, 2026-11-20: examples are now invented.
+- 1.0.2, 2026-11-20: every cheer-up style gets its own tab icon (the scrapbook demo had none).
 - 1.0.0, 2026-11-19: written after a real client call and tested on a made-up call (3 runs without the skill, 3 with, 3 after tightening). Without it: 1 of 3 coached the speaker on a speech-to-text error, 0 of 3 had a "went well" section, 0 of 3 offered a cheer-up page, and replies ran to about 1,000 words. With it: none coached, all three had both, and the tightened version came in at 520 to 538 words.

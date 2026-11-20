@@ -14,7 +14,7 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/wan-huiyan/after-the-call" alt="license"/></a>
   <a href="https://github.com/wan-huiyan/after-the-call/commits"><img src="https://img.shields.io/github/last-commit/wan-huiyan/after-the-call" alt="last commit"/></a>
-  <img src="https://img.shields.io/badge/version-1.0.1-brightgreen" alt="version 1.0.1"/>
+  <img src="https://img.shields.io/badge/version-1.0.2-brightgreen" alt="version 1.0.2"/>
   <a href="https://claude.com/claude-code"><img src="https://img.shields.io/badge/Claude_Code-skill-orange" alt="Claude Code skill"/></a>
 </p>
 
