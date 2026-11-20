@@ -1,9 +1,9 @@
 ---
-name: after-the-call
+name: rewind-that-call
 description: Use when someone has just given a presentation, client call, demo, pitch or talk and wants to reflect on it, asks "how can I do better next time", "help me get oriented", "debrief the meeting", feels it went badly or "delivered it dry", or shares a meeting transcript, recording notes or slides after a call. Also when they ask to turn the learnings into something cute or cheerful.
 ---
 
-# After the call 🌱
+# Rewind that call 🌱
 
 A kind, specific debrief after a presentation, then (if wanted) a cute page or slide deck of the learnings. Pairs well with `sparkle-that-page` (cute effects) and `huashu-design` (design directions).
 
