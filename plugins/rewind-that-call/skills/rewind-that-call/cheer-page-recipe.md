@@ -7,17 +7,19 @@ each later turned into a slide deck. The person kept all three.
 
 Write `content.md` in a Desktop folder named `<date> <Name> — call learnings/`. It holds the text every style shares:
 
-- Title: "You did a hard thing today." plus one line on what they delivered.
-- What the audience actually said (3 or 4 quotes, words only, no timestamps on the page).
+- Title: "You did a hard thing today." plus one line on what they delivered. After a clear "no", use a plainer title ("Here is what we learned.") and skip the confetti.
+- What the audience actually said (3 or 4 quotes, words only, no timestamps on the page). First names only, no company names or figures, unless the person asks for them.
 - What the pause or outcome really means (one short card).
 - What went well (2 or 3).
 - Presenting: the changes (at most 5).
 - Workflow: the changes (at most 4), with a note on which are the AI's side.
-- Time (one line), plus "Tell Claude a stop time and it will stop."
+- Time (one line), plus "Pick a stop time and write it down."
 - Tomorrow: the next meeting as a checklist, and the opening sentences to bring.
 - Closing: "Now go and eat something." (adapt it to them).
 
 Every style uses this text word for word, so the content cannot drift between versions.
+
+The page holds a client's words. Keep it on the person's machine. Before hosting it anywhere public or emailing it to others, ask.
 
 ## 2. Three styles, then build
 

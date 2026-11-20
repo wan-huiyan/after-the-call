@@ -14,7 +14,7 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/github/license/wan-huiyan/rewind-that-call" alt="license"/></a>
   <a href="https://github.com/wan-huiyan/rewind-that-call/commits"><img src="https://img.shields.io/github/last-commit/wan-huiyan/rewind-that-call" alt="last commit"/></a>
-  <img src="https://img.shields.io/badge/version-1.0.2-brightgreen" alt="version 1.0.2"/>
+  <img src="https://img.shields.io/badge/version-1.1.0-brightgreen" alt="version 1.1.0"/>
   <a href="https://claude.com/claude-code"><img src="https://img.shields.io/badge/Claude_Code-skill-orange" alt="Claude Code skill"/></a>
 </p>
 
@@ -24,6 +24,33 @@
   <img src="docs/flow.svg" width="760" alt="The reply in eight parts: where it stands, what went well, spoken figures vs slides, presenting, workflow, time, one next action, optional cheer-up page"/>
 </p>
 <p align="center"><sub>Every reply follows the same eight parts, so a tired reader can skim it on a phone.</sub></p>
+
+## Quick start 🚀
+
+```bash
+/plugin marketplace add wan-huiyan/rewind-that-call
+/plugin install rewind-that-call@wan-huiyan-rewind-that-call
+```
+
+<details><summary>Shell form / git clone</summary>
+
+```bash
+claude plugin marketplace add wan-huiyan/rewind-that-call
+git clone https://github.com/wan-huiyan/rewind-that-call /tmp/rewind-that-call
+cp -r /tmp/rewind-that-call/plugins/rewind-that-call/skills/rewind-that-call ~/.claude/skills/
+```
+</details>
+
+## Try it in 60 seconds ⏱️
+
+No call of your own to hand? The repo ships the made-up call behind the demos: a transcript with the garbled numbers in it, the slides and the "I think that went badly" message. After installing, run Claude Code inside a clone of this repo and paste:
+
+```text
+The call just happened and I think it went badly. How can I do better next time?
+@docs/sample/transcript.md @docs/sample/slides.md @docs/sample/message.txt
+```
+
+Watch for "seventy" against the slide's 17 being called a transcription error, and the "pause" at 00:33:00 read as a product launch, not a no.
 
 ## Why it exists 💭
 
@@ -50,25 +77,10 @@ And every change it suggests points at a minute of the call: *"Morgan asked 'So 
 | 🎙️ | **Spoken figures vs slides** | A figure that sounds like the slide's (17 vs "seventy") is called a transcription error, not a slip |
 | 🎤 | **Presenting** | At most 5 changes, each tied to a moment ("they asked which one first at 9:30; the options came at 24:00") |
 | 🛠️ | **Workflow** | At most 4 changes, split by who owns them, an AI deck-builder included |
-| ⏰ | **Time** | 1 or 2 changes, for example keeping the last 2 to 3 hours for one run-through out loud, and lunch |
+| ⏰ | **Time** | 1 or 2 changes, only when the chat shows it (for example, the deck was still changing in the last hour) |
 | 👣 | **One next action** | Something doable today, usually prep for the meeting already booked |
+| 🧠 | **For Claude next time** | Optional, if Claude Code built the deck: it reads that session's log (counts and times only) and writes up to 5 rules for itself, each with the evidence, saved only if you say yes |
 | 🍜 | **Cheer-up page** | Offered in one line: a cute HTML page or slide deck of the learnings, in [garden 🌷](https://wan-huiyan.github.io/rewind-that-call/docs/demo/garden.html), [scrapbook 📎](https://wan-huiyan.github.io/rewind-that-call/docs/demo/scrapbook.html) or [cozy quest 🎮](https://wan-huiyan.github.io/rewind-that-call/docs/demo/cozy-quest.html) style |
-
-## Quick start 🚀
-
-```bash
-/plugin marketplace add wan-huiyan/rewind-that-call
-/plugin install rewind-that-call@wan-huiyan-rewind-that-call
-```
-
-<details><summary>Shell form / git clone</summary>
-
-```bash
-claude plugin marketplace add wan-huiyan/rewind-that-call
-git clone https://github.com/wan-huiyan/rewind-that-call /tmp/rewind-that-call
-cp -r /tmp/rewind-that-call/plugins/rewind-that-call/skills/rewind-that-call ~/.claude/skills/
-```
-</details>
 
 ## Usage 💬
 
@@ -88,11 +100,21 @@ Then ask for the cheer-up page ("can you make our learnings into something cute?
 
 Both are optional. Plain HTML and CSS work too.
 
+## Your transcript 🔒
+
+A transcript is usually a client's words, so the skill is careful with it:
+
+- It works only from the files you hand it, inside your own Claude Code session. (That session talks to Anthropic as usual; the skill adds no other service.)
+- It never saves client quotes or figures to memory. If you say yes, it saves the pattern ("this client asks for the decision first"), dated.
+- The cheer-up page uses first names only and stays on your machine. It asks before anything is hosted or emailed.
+- Reading Claude's own session logs is opt-in, and the bundled script prints only counts, edit times and your own short messages, never tool output.
+
 ## Limitations 🫶
 
 - Tested on one made-up call, 9 runs in all. It has not yet been tried across many real calls or other languages.
-- It needs a transcript. From memory alone it can still give structure, but no timestamps.
+- It works best from a raw transcript. From an AI meeting summary or your own notes it still gives the structure, but no timestamps, and it says so.
 - It cannot hear the audio, so it cannot tell a real slip from a transcription error. It asks you instead.
+- "For Claude next time" only works when Claude Code built the deck in the last 7 days on this machine, and the script needs `jq`.
 - It is not presentation-skills training. It works from one call's evidence, not general advice.
 - The three demo decks are fiction: a made-up call with invented people, written to show the styles. They are not output from a real debrief.
 
