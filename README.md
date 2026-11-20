@@ -21,9 +21,9 @@
 > **Hand your AI agent the call transcript (or let it find the meeting's Gemini notes in your Google Drive), your slides and your "I think that went badly" message, and get back a debrief under 600 words: what the audience actually decided, what went well in their own words, and at most a handful of changes, each tied to the minute it would have helped.**
 
 <p align="center">
-  <img src="docs/readme/how-it-works.svg" width="800" alt="A cassette labelled 'Renewals call'. Side A: four cards ride past the tape head (a transcript or notes file, the meeting's Gemini notes found through Google Calendar and Drive, the slides, your 'I think that went badly' message); the tape rewinds and prints an 8-part debrief like a receipt, including 'seventy' said vs 17 on the slide called a transcription error. Side B: the deck's build session, read from Claude Code logs (Codex and Cursor readers untested) as counts and times only; a counter runs to 13:52 before the 14:00 call, three rules for the AI are written on the case insert, each with its log time, and saved only when you tick yes."/>
+  <img src="docs/readme/how-it-works.svg" width="800" alt="A scrapbook opens. Page one, the meeting: polaroids say it opened by apologising for the slides, the big question came long before the answer, one finding stuck, and it ended on let's plan, not no. Page two, how the deck was made, from the AI's session log: most changes landed on the day of the call, the same instructions had to be given twice, some visuals went missing overnight, the presented version came together last. Page three, next time: a You list (lead with the answer, skip the apology, cut slides you'd introduce with a doubt, end by asking them to choose) and a Your AI list (treat the deadline as a freeze, check every instruction is done, never drop content quietly, build the presenting version first), then Keep these? yes, saved for next time."/>
 </p>
-<p align="center"><sub>Side A: the call's evidence becomes your debrief. Side B: the session that built the deck becomes rules for your AI, saved only if you say yes. (A made-up call.)</sub></p>
+<p align="center"><sub>A retro after the call: what happened in the meeting, how the deck was made, and what you and your AI do differently next time. Based on a real call, details changed.</sub></p>
 
 ## Quick start 🚀
 
