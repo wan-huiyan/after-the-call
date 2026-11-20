@@ -1,50 +1,64 @@
 ---
 name: rewind-that-call
-description: Use when someone has just given a presentation, client call, demo, pitch or talk and wants to reflect on it, asks "how can I do better next time", "help me get oriented", "debrief the meeting", feels it went badly or "delivered it dry", or shares a meeting transcript, AI meeting summary, recording notes or slides after a call, even with no transcript at all. Also when they ask to turn the learnings into something cute or cheerful, or what Claude should do differently next time it builds a deck.
+description: Use when someone has just given a presentation, client call, demo, pitch or talk and wants to reflect on it, asks "how can I do better next time", "help me get oriented", "debrief the meeting", feels it went badly or "delivered it dry", or shares a meeting transcript, AI meeting summary, recording notes or slides after a call, even with no transcript at all (it can find the meeting's notes through a Google Drive or Calendar connector). Also when they ask to turn the learnings into something cute or cheerful, or what their AI assistant (Claude, Codex, Cursor or another) should do differently next time it builds a deck.
 ---
 
 # Rewind that call 🌱
 
-A kind, specific debrief after a presentation, then (if wanted) a cute page or slide deck of the learnings, and lessons for Claude from the session that built the deck. Pairs well with `sparkle-that-page` (cute effects) and `huashu-design` (design directions).
+A kind, specific debrief after a presentation, then (if wanted) a cute page or slide deck of the learnings, and lessons for the AI agent from the session that built the deck. Written for any agent; "you" means the agent reading this. Optional helpers if installed: `sparkle-that-page` (cute effects) and `huashu-design` (design directions).
 
 **Core principle:** the reader is often tired and down. Advice lands only if it is true, specific, and starts from what worked. True comes first: never invent praise, a quote or a minute.
+
+**These are principles, not a script.** Choose your own headings, titles and sentences for this person and this call. Nothing below is text to copy; where an example appears, it shows the idea only. Commands, file names and search syntax are exact; everything a person reads is yours to word.
 
 ## Check the input first
 
 | What you have | What you do |
 |---|---|
-| A raw transcript with timestamps | The reply below, as written. |
-| An AI meeting summary only (Gemini, Otter, Zoom, Teams notes) | Say so in one line. Never present the summary's wording as the audience's own words, and never invent a minute: mark points "(from the summary, no timestamp)". Skip the spoken-figures check unless the summary quotes a figure. |
-| Notes or memory only | Ask one question each for "Where it stands" and "What went well" (what did they say at the end? what did they ask about most?), then give the reply without timestamps. |
-| Timestamps that look offset (the recording started late, or times run past the call length) | Ask once for the offset before quoting minutes. |
+| Nothing handed over, but a Google Drive or Calendar tool (connector or MCP server) is available | Find the meeting's notes yourself (below), then come back to this table. |
+| A raw transcript with timestamps | The reply below, in full. |
+| An AI meeting summary only (Gemini, Otter, Zoom, Teams notes) | Say so in one line. Never present the summary's wording as the audience's own words and never invent a minute; mark such points as coming from the summary, with no timestamp. Skip the spoken-figures check unless the summary quotes a figure. |
+| Notes or memory only | Ask one short question each about where things stand and what went well (for example, what was said at the end, what they asked about most), then reply without timestamps. |
+| Timestamps that look offset (recording started late, times run past the call length) | Ask once for the offset before quoting minutes. |
 
 Every timestamp you write must appear in the input. If you cannot point to it, leave the minute out.
 
-## The reply, in this order
+### Finding the call's notes yourself
 
-1. **Where it stands** (3 to 5 bullets). What the audience actually decided or asked for, quoted with timestamps. What any "pause" or "no" is literally about, marked as **stated** (they said why, quote it), **inferred** (your reading) or **unknown**. If a "no" is ambiguous, give both readings. The next meeting or send that is already booked.
-2. **What went well** (2 or 3 items). Each one quotes the audience's own words with a timestamp. If nobody said anything positive, name something they did (stayed past time, asked a follow-up, booked the next step). If there is nothing at all, say plainly "there is little to quote this time" and move on. Never invent praise.
-3. **Spoken figures vs the slides** (only if they differ). See the rule below.
-4. **Presenting**: at most 5 changes. Each one: what to do, plus the timestamp where it would have helped ("At 9:30 they asked which one first; the options came at 24:00").
-5. **Workflow**: at most 4 changes, split by who owns them. If an AI or a teammate built the deck, name what *they* should do differently (for example, adding features on call day, or twenty versions in one day). Do not put the whole load on the presenter.
-6. **Time**: 1 or 2 changes, only from what the chat or transcript shows about prep (for example, if the deck was still changing in the last hour: keep the time before the next call for one timed run-through out loud, and food). No rule of thumb the evidence does not support.
-7. **One next action**, doable today. Default: prepare for the next meeting already booked. After a clear "no", the next action is about recovery (a short thank-you, one question about what would change their mind, or closing it cleanly).
-8. **Two one-line offers** (below): the cheer-up page, and lessons for Claude from the build session if Claude built the deck. Skip the cheer-up page after a clear "no" or if the person is not in the mood, unless they ask.
+Google Meet saves a "Notes by Gemini" doc to the organiser's Drive, linked from the Calendar event. Tested on a real call (2026-11-19) through a Drive connector; any Drive tool or MCP server should work the same way:
 
-Acknowledge feelings in one plain sentence: "Feeling flat after that makes sense." No pep talk.
+1. Search Drive for docs titled "Notes by Gemini" changed on the call's day, using whatever search form your Drive tool takes (plain keywords on some; with the Drive API query syntax, for example: `title contains 'Notes by Gemini' and modifiedTime > '<call date>T00:00:00'`). With a Calendar tool, the event's attachments should point to the same doc (this route is not tested yet); match on meeting title and start time.
+2. Read the doc. It usually holds the summary and, under a Transcript heading, the full transcript with `hh:mm:ss` timestamps. Work from the transcript, not the summary. No transcript inside means the summary-only row applies.
+3. Tell the person in one line which doc you used (title and date), so they can check it is the right call.
+4. The notes may sit on a different account from the one connected (a work account). If nothing turns up, ask for the file rather than guess.
+
+## The reply: order of content
+
+Name each part in your own words. The order matters more than the labels: outcome first so they know where they stand, then what worked so the changes land.
+
+1. **Where things stand** (3 to 5 points). What the audience actually decided or asked for, quoted with timestamps. What any pause or "no" is literally about, marked as **stated** (they said why; quote it), **inferred** (your reading) or **unknown**. If a "no" is ambiguous, give both readings. Any next meeting or send already booked.
+2. **What went well** (2 or 3). Each quotes the audience's own words with a timestamp. If nobody said anything positive, name something they did (stayed past time, asked a follow-up, booked the next step). If there is nothing at all, say plainly that there is little to quote and move on. Never invent praise.
+3. **Spoken figures vs the slides**, only if they differ. See the rule below.
+4. **Presenting**: at most 5 changes. Each says what to do and where it would have helped: a timestamp if the input has them; otherwise the moment described in the person's own words, labelled as from their notes or the summary.
+5. **Workflow**: at most 4 changes, split by who owns them. If an AI or a teammate built the deck, name what *they* should do differently (late features on call day, many versions in one day). Do not put the whole load on the presenter. Use what this conversation with the person shows, too (late changes, corrections), not only the transcript.
+6. **Time**: 0 to 2 changes. Leave the section out if nothing in the transcript, the meeting chat or your conversation with the person shows how prep went. No rule of thumb the evidence does not support. (An idea, not wording: if the evidence shows the deck still changing late, the change might be to protect time before the next call for one timed run-through out loud.)
+7. **One next action**, doable today. Default: prepare for the meeting already booked. After a clear "no", make it about recovery (a short thank-you, one question about what would change their mind, or closing cleanly).
+8. **Two short offers**, one line each, in your own words: the cheer-up page, and lessons for the agent from the build session if an AI built the deck. Skip the cheer-up offer after a clear "no", or if the person has said they want only the debrief or seems upset in their own words, unless they ask; otherwise offer.
+
+**Feelings:** acknowledge how they feel in one plain, honest sentence that fits what they told you. No pep talk, no stock comfort line.
 
 **Length:** the whole reply stays under 600 words. Cut the weakest change before cutting a timestamp.
 
-**Data problems you spot** (a small group, counts that do not add up) are not presenting advice. Put at most two in one line, "Before the deck goes out:", after the next action.
+**Data problems you spot** (a small group, counts that do not add up) are not presenting advice. Put at most two in one line after the next action, framed as things to fix before the deck goes out again.
 
-**Owner unknown:** if nothing says who built the deck, write "you, or whoever builds the deck (an AI included)". Do not guess.
+**Owner unknown:** if nothing says who built the deck, address the change to the presenter or whoever builds the deck, an AI included. Do not guess.
 
 ## When it really did go badly
 
 A clear "no", a factual error the audience caught, or a tense exchange. Then:
 
 - State the outcome first, in their words. Do not reframe it as a pause.
-- "What went well" follows the fallback in step 2 (a behaviour, or "little to quote"). Do not stretch.
+- What went well uses the fallback in step 2 (a behaviour, or little to quote). Do not stretch.
 - Keep the changes to what would have changed the outcome, not polish.
 - Plainer tone throughout. No cheer-up offer unless asked.
 
@@ -52,59 +66,62 @@ A clear "no", a factual error the audience caught, or a tense exchange. Then:
 
 Auto transcripts garble numbers ("seventeen" becomes "seventy", "fifteen" becomes "fifty"), names, and small words ("can" and "can't").
 
-| Transcript vs slide | What you write |
+| Transcript vs slide | What to conclude |
 |---|---|
 | Sounds like the slide figure (17 vs "seventy") | A transcription error. Say so. Do not coach the speaker on it. |
 | Partly garbled ("fifty fifty-five" for 15) | Do not conclude. Say it is probably transcription and ask the speaker to confirm in one clause. |
 | The audience reacted to the spoken figure (asked about it, repeated it, corrected it) | They heard it, so it was probably said. Treat it as a real slip, kindly, and quote their reaction. |
 | Unrelated to anything on the slide | Ask the speaker what they said. Do not assume a slip. |
-| Any case | If the AI meeting summary repeats the wrong figure, give the slide figure for the follow-up email. |
+| Any case | If the AI meeting summary repeats the wrong figure, give the slide figure for any follow-up message. |
 
-Never write "say the numbers exactly as on the slide" unless the speaker confirms they misspoke or the audience reacted to it. If they correct you, accept it and update any notes.
+Never tell the speaker to say numbers exactly as on the slide unless they confirm they misspoke or the audience reacted. If they correct you, accept it and update any notes.
 
 ## The cheer-up page (when asked)
 
-Read `cheer-page-recipe.md` in this folder. In short: write one content file first. Show three styles (garden, scrapbook, cozy quest). Build the chosen ones with `huashu-design` for direction and `sparkle-that-page` for effects if installed; plain HTML and CSS work too. Then look at every screen yourself.
+Read `cheer-page-recipe.md` in this folder. In short: write one shared content file in your own words for this person; offer three styles; build the chosen ones (with design or effects helpers if installed, plain HTML and CSS otherwise); then look at every screen yourself. If you have no browser tool, say which checks you could not run and list them for the person; do not call the page checked.
 
-## Lessons for Claude from the build session (when asked)
+## Lessons for the agent from the build session (when asked)
 
-If Claude Code built or edited the deck, its session log shows what happened on Claude's side: how many versions, how late the last change came, what the person had to correct. Offer it in one line after the reply: "Want me to look at the session that built the deck and write down what I should do differently next time?" Reading the logs is opt-in. This part sits outside the 600-word reply.
+If an AI coding agent built or edited the deck, its session log shows what happened on the AI's side: how many versions, how late the last change came, what the person had to correct. Offer to look, in one line after the reply. Reading the logs is opt-in. The log script is for sessions you cannot see; if the build happened in this conversation, use what you can already see instead. This part sits outside the 600-word reply.
 
-1. Run `scripts/session_evidence.sh <deck file name> <call start in UTC>` from this folder. Use the deck's real file name (ask if unsure); a wrong name finds nothing. It searches `~/.claude/projects/` (all worktrees) for logs from the last 7 days that mention the deck (`DAYS=14` for longer), and prints only counts, edit and build times, and the person's own short messages. It takes a minute or two. Never read a raw log: they are huge and tool output can hold secrets.
+1. Run `scripts/session_evidence.sh <deck file name> <call start in UTC>` from this skill's folder (the one holding this file). It needs a bash shell and `jq`, plus `sqlite3` for Cursor. If you cannot run it (no shell, Windows, a missing tool), say the build-session lessons were skipped and why; do not report "no log found". It reads only Claude Code, Codex and Cursor logs; if another agent built the deck, say its log could not be read, rather than that it showed nothing, and write no items. Use the deck's real file name (ask if unsure); a wrong name finds nothing. It searches Claude Code logs (`~/.claude/projects/`, all worktrees), Codex logs (`~/.codex/sessions/`) and Cursor's chat database for anything from the last 7 days mentioning the deck (`DAYS=14` for longer), and prints only counts, edit and build times, and the person's own short messages. The Claude Code reader is tested; the Codex and Cursor readers are written from those tools' storage formats and have not been run on a real session, so label any evidence from them "(Codex/Cursor reader, untested)". It takes a minute or two. Never read a raw log: they are huge and tool output can hold secrets.
 2. Look for: direct edits and build commands (a deck made by a script shows up as commands, not edits), how many came on call day and in the last hour before the call, features added late, the person correcting the same thing twice, deadlines the person stated.
-   If the script finds no log, or no edits and no build commands, say so in one line ("no session log shows the deck being built, so there is nothing to learn from on my side") and write no items.
-3. Write at most 5 items under **For Claude next time**. Each one:
-   - cites the evidence with its log timestamp ("14 deck edits on call day, the last at 13:52 UTC, eight minutes before the call");
-   - is written as a rule ready to save, with a **Why** and a **How to apply** line;
-   - talks to the person as "you", never "he" or "she";
-   - records the pattern only, never client names, quotes, figures, file names or project folder names, which often name the client ("freeze the deck the evening before a client call", not the client's numbers).
-4. Ask before saving. On a yes, save each as a memory or lesson in the person's own format, one per file if that is their layout. Never overwrite an existing entry; add to it.
+   If the script finds no log, or no edits and no build commands, say so in one line and write no items.
+3. Write at most 5 items, under a heading of your choosing. Each one:
+   - cites its evidence with the log timestamp (for example, a count of edits on call day and the time of the last one);
+   - is a rule ready to save: it states the rule, why it matters, and when to apply it, laid out in the format of the file it will be saved to;
+   - addresses the person as "you", never "he" or "she";
+   - records the pattern only, never client names, quotes, figures, file names or project folder names, which often name the client.
+4. Ask before saving. On a yes, save each to whatever notes, memory or rules file the person's agent uses, in that file's existing format, one per file if that is the layout. Never overwrite an existing entry; add to it.
 
 ## Common mistakes
 
 | Mistake | Fix |
 |---|---|
 | Ten tips in one wall | Caps above. Rank and cut the rest. |
-| Advice with no evidence | Every change carries a timestamp or a quote. |
+| Advice with no evidence | Every change carries a timestamp, a quote, or (without either) the moment in the person's own words, labelled by source. |
 | A timestamp that is not in the input | Leave the minute out. Summaries have none. |
-| "They're not sold" accepted as fact | Check the transcript for what they said; a pause is not a rejection unless they said it is. |
+| "They're not sold" accepted as fact | Check the transcript for what they said; a pause is not a rejection unless they said so. |
 | "It's just a pause" when they said no | State the outcome first, in their words. |
-| Praise made up to fill "What went well" | Quote, or name a behaviour, or say there is little to quote. |
+| Praise made up to fill what went well | Quote, name a behaviour, or say there is little to quote. |
 | Presenter blamed for team or AI choices | Split workflow changes by owner. |
 | Generic tips ("know your audience") | Only changes this transcript supports. |
-| Made-up rules of thumb ("25 minutes of content for a 45-minute slot") | Every number in the advice comes from the transcript, the slides or the chat. |
-| Client quotes saved to memory | Save the pattern, not the quote, and only on a yes. |
+| Made-up rules of thumb ("25 minutes of content for a 45-minute slot") | Every number in the advice comes from the transcript, the slides, the meeting chat or your conversation with the person. |
+| Copying example wording or headings as fixed text | Write for this person and this call. |
+| Client quotes saved to notes or memory | Save the pattern, not the quote, and only on a yes. |
 
 ## Privacy
 
-The transcript is usually a client's words. Work only from the files the person gives you. Do not paste quotes into anything shared or hosted (a public page, an email to others, a gist) without asking. The cheer-up page uses first names only by default.
+The transcript is usually a client's words. Work only from files the person gives you, or the meeting's own notes found through their connected Drive or Calendar. Do not paste quotes into anything shared or hosted (a public page, an email to others, a gist) without asking. The cheer-up page uses first names only by default.
 
 ## Afterwards
 
-If memory or persona files exist for this client, offer to update them with what the audience revealed (how they decide, what they asked first). Ask first, save the pattern rather than verbatim quotes or figures, date it, never overwrite.
+If notes, memory or persona files exist for this client, offer to update them with what the audience revealed (how they decide, what they asked first). Ask first, save the pattern rather than verbatim quotes or figures, date it, never overwrite.
 
 ## Changelog
 
+- 1.3.0, 2026-11-20: principles, not a script. Removed every fixed phrase, title and heading the agent was told to say or display; each is now the principle behind it, and the agent writes its own words for the person and the call. Agent-neutral throughout (any agent, not only Claude); saving goes to whatever notes, memory or rules file the person's agent uses. The cheer-up recipe now lists what to cover, not what to write. Rule changes: Time is 0 to 2 changes and is left out without evidence; saved lessons follow the target file's format rather than fixed Why / How-to-apply lines; input without timestamps anchors changes to the person's own words; the agent uses the conversation it is in as evidence for Workflow and Time; a missing shell, browser or unsupported agent is reported as a skipped check, never as "nothing found"; cheer-page quotes are up to 4 and the Time line appears only when the debrief had one.
+- 1.2.0, 2026-11-20: finds the call's notes through a Google Drive or Calendar connector when none is handed over (tested on a real call); the session-log script also reads Codex and Cursor (both readers untested).
 - 1.1.0, 2026-11-20: renamed from after-the-call. New: an input check (summary-only and notes-only input never get invented timestamps), a branch for calls that really did go badly, a stricter spoken-figures table (partly garbled means ask; an audience reaction means a real slip; names and "can/can't" too), a Time rule that needs evidence, privacy rules, and lessons for Claude from the build session via `scripts/session_evidence.sh`.
 - 1.0.2, 2026-11-20: every cheer-up style gets its own tab icon (the scrapbook demo had none).
 - 1.0.1, 2026-11-20: examples are now invented.
